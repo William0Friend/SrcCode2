@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
+//mine
+            $table->user_id();
+            $table->question_id();
+            $table->text('body');
+            $table->text('code_body');
+//endmine   
             $table->timestamps();
         });
     }

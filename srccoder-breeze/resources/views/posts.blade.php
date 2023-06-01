@@ -1,18 +1,46 @@
-<!doctype html>
+{{-- layout.blade.php way same directory--}}
+{{-- 
+    
+    @extends('layout')
+@section('content')
 
-<header>
-    <title>vid-blog</title>
-    <link trel="stylesheet" href="/css/app.css" >
-    <script src="/js/app.js"></script>
-</header>
-<body>
+@foreach ($posts as $post)
+<article class="container p-4 m-4 border-separate shadow-lg row col-8 col-12 bg-dark rounded-3 border-bottom border-spacing-1 border-danger ">
+    
+    <a href="/posts/{{$post->slug}}">
+    <h1 class="container text-center col-md-6 fw-bold text-danger" >{{$post->title}}</h1>
+    </a>
+    <div class="container text-left border col-md-5 bg-light rounded-3 border-primary shadow-lg-primary">
+        {{$post->excerpt}}
+   </div>
+    <div class="container text-left border col-md-5 bg-light rounded-3 border-primary shadow-lg-primary">
+         {!!$post->body!!}
+    </div>
 
-    <article>
-        <h1><a href="/post">My First Post</a></h1>
-        <p>one</p>
+</article>
+@endforeach
+
+
+@endsection --}}
+
+
+{{-- components directory --}}
+
+<x-layout>
+    @foreach ($posts as $post)
+    <article class="container p-4 m-4 border-separate shadow-lg row col-8 col-12 bg-dark rounded-3 border-bottom border-spacing-1 border-danger ">
+        
+        <a href="/posts/{{$post->slug}}">
+        <h1 class="container text-center col-md-6 fw-bold text-danger" >{{$post->title}}</h1>
+        </a>
+        <div class="container text-left border col-md-5 bg-light rounded-3 border-primary shadow-lg-primary">
+            {{$post->excerpt}}
+       </div>
+        <div class="container text-left border col-md-5 bg-light rounded-3 border-primary shadow-lg-primary">
+             {!!$post->body!!}
+        </div>
+    
     </article>
-    <article>
-        <h1>My Second Post</h1>
-        <p>two</p>
-    </article>
-</body>
+    @endforeach
+     
+</x-layout>

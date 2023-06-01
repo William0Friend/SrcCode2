@@ -12,7 +12,7 @@ class Bounties extends Model
         'id',
         'user_id',
         'question_id',
-        'amount',
-        'is_accepted',
+        'body',
+        'code_body',
     ];
 }
