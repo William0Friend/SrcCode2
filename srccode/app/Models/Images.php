@@ -9,7 +9,6 @@ class Images extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id',
         'file_name',
         'uploaded_on',
         'status',

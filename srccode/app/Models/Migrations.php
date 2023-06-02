@@ -9,7 +9,6 @@ class Migrations extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id',
         'migration',
         'batch',
     ];

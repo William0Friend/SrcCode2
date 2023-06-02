@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
@@ -30,77 +31,30 @@ Route::get('/dashboard', function () {
 //video
 
 Route::get('/', function () {
-    
-    //final
-    //$posts = Post::all();
     return view('posts', [
-        'posts' => Post::all()
+        //4 queries n+1 problem
+        //'posts' => Post::all()
+        //2 queries only
+        'posts' => Post::with('category')->get()
     ]);
-    //$files = File::files(resource_path("posts"));
-    //1
-    // $posts = [];
-//3
-    // $posts = collect(File::files(resource_path("posts")))
-    // ->map(function ($file){
-    //     return  YamlFrontMatter::parseFile($file);
-    // })
-    // ->map(function ($document){
-    //     //s$document = YamlFrontMatter::parseFile($file);
-    //     return new Post(
-    //         $document->title,
-    //         $document->excerpt,
-    //         $document->date,
-    //         $document->body(),
-    //         $document->slug
-    //     );
-    // });
-
-    //2
-    // $posts = array_map(function ($file) {
-    //     $document = YamlFrontMatter::parseFile($file);
-
-    //     return new Post(
-    //         $document->title,
-    //         $document->excerpt,
-    //         $document->date,
-    //         $document->body(),
-    //         $document->slug
-    //     );
-    // }, $files);
-
-    //1
-    // foreach ($files as $file){
-    //     $document = YamlFrontMatter::parseFile($file);
-    //     $posts [] = new Post(
-    //         $document->title,
-    //         $document->excerpt,
-    //         $document->date,
-    //         $document->body(),
-    //         $document->slug
-    //     );
-
-    // }
-    // ddd($posts);
-    
-    // $posts = Post::all();
-    // ddd($posts);
-    // return view('posts', [
-    //     'posts' => $posts
-    // ]);
 });
 
-Route::get('posts/{posts}', function ($slug) {
-    
-//find a post by it's slug and pass it to  a view called "post"
-    return view('post', [
-        'post' => Post::findOrFail($slug)
+//Route model Binding aka Binding Post $post parameter to findOrFail($post)
+//willdcard must match parameter name
+//
+//Route::get('posts/{post:slug}', function (Post $post) {
+Route::get('posts/{post}', function (Post $post) {
+    //find a post by it's slug and pass it to  a view called "post"
+        return view('post', [
+            'post' => Post::findOrFail($post)
     ]);
+});
 
-
-})->where('post','[A-z_\-]+');
-
-
-
+Route::get('categories/{category:slug}', function (Category $category) {
+    return view('posts', [
+        'posts' => $category->posts
+    ]);
+}); 
 //blog-tut
 Route::get('/blog', function () {
     return view('blog');

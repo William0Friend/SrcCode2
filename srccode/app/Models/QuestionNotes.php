@@ -9,7 +9,6 @@ class QuestionNotes extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id',
         'user_id',
         'question_id',
         'note',

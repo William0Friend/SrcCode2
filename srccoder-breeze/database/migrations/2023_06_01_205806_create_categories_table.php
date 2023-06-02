@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('answers', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-//mine
-            $table->string('user_id');
-            $table->string('question_id');
-            $table->text('body');
-            $table->text('code_body');
-//endmine   
+            $table->string('name');//foreignId is a shortcut for unsignedBigInteger
+            $table->string('slug')->unique();//slug is a url friendly version of the title
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('answers');
+        Schema::dropIfExists('categories');
     }
 };

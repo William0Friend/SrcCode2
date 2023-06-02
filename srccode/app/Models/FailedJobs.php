@@ -9,7 +9,6 @@ class FailedJobs extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id',
         'uuid',
         'connection',
         'queue',

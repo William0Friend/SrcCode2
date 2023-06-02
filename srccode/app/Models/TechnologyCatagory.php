@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TechnologyCatagory extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'technology_catagory',
+    ];
 }

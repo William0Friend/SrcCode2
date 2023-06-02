@@ -9,7 +9,6 @@ class Difficulty_Level extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id',
         'question_id',
         'difficulty_level',
     ];

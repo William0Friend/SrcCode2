@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ProgrammingLanguage extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'programming_language',
+    ];
 }
+
