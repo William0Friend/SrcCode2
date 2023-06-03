@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,55 +16,108 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-         \App\Models\User::factory(10)->create();
+        //clear out all data avoid duplicates and migrate fresh
+       // User::truncate();
+       // Category::truncate();
+       // Post::truncate();
+        
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Post::factory(5)->create();
+       
+        // allow for specific user, 5 posts by same user, must go before post factory
+        $user = User::factory()->create(
+            [
+                'name' => 'John Doe'
+            ]
+        );
+        Post::factory(5)->create(
+            [
+                'user_id' => $user->id
+            ]
+        );
+      
+        // Post::factory(5)->create();
+       
+      //??MAUAL TESTING WAY
+        //\App\Models\User::factory(10)->create();
+    //      $user = User::factory()->create();//User::factory(10)->create();
+    //     // \App\Models\User::factory()->create([
+    //     //     'name' => 'Test User',
+    //     //     'email' => 'test@example.com',
+    //     // ]);
 
-        Category::create([
-            'name' => 'Laravel',
-            'slug' => 'laravel',
-        ]);
+    //     // Category::create([
+    //     //     'name' => 'Laravel',
+    //     //     'slug' => 'laravel',
+    //     // ]);
 
-        Category::create([
-            'name' => 'Vue.js',
-            'slug' => 'vue-js',
-        ]);
+    //     $personal = Category::create([
+    //         'name' => 'Personal',
+    //         'slug' => 'personal',
+    //     ]);
 
-        Category::create([
-            'name' => 'CSS',
-            'slug' => 'css',
-        ]);
+    //     $work = Category::create([
+    //         'name' => 'Work',
+    //         'slug' => 'work',
+    //     ]);
 
-        Category::create([
-            'name' => 'JavaScript',
-            'slug' => 'javascript',
-        ]);
+    //     $hobbies = Category::create([
+    //         'name' => 'Hobbies',
+    //         'slug' => 'hobbies',
+    //     ]);
 
-        Post::create([
-            'title' => 'My first post',
-            'category_id' => 1,//'category_id' => Category::all()->random()->id,
-            'slug' => 'my-first-post',
-            'excerpt' => '<p>Lorem ipsum dolor</p>',
-            'body' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>',
-        ]);
+    //     Post::create([
+    //         'title' => 'first personal post',
+    //         'user_id' => $user->id,//'user_id' => User::all()->random()->id, or $user->id
+    //        'category_id' => $personal->id,//'category_id' => Category::all()->random()->id, or $family->id, $work->id, $hobbies->id
+    //        'slug' => 'first-personal-post',
+    //         'excerpt' => '<p>Lorem ipsum dolor</p>',
+    //         'body' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>',
+    //     ]);
 
-        Post::create([
-            'title' => 'My second post',
-            'category_id' => 2,//'category_id' => Category::all()->random()->id,
-            'slug' => 'my-second-post',
-            'excerpt' => '<p>Lorem ipsum dolor</p>',
-            'body' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>',
-        ]);
+    //     Post::create([
+    //         'title' => 'second family post',
+    //         'user_id' => $user->id,//'user_id' => User::all()->random()->id,
+    //       'category_id' => $personal->id,//'category_id' => Category::all()->random()->id,
+    //        'slug' => 'second-personal-post',
+    //         'excerpt' => '<p>Lorem ipsum dolor</p>',
+    //         'body' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>',
+    //     ]);
 
-        Post::create([
-            'title' => 'My third post',
-            'category_id' => 3,//'category_id' => Category::all()->random()->id,
-            'slug' => 'my-third-post',
-            'excerpt' => '<p>Lorem ipsum dolor</p>',
-            'body' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>',
-        ]);
-    }
+    //     Post::create([
+    //         'title' => 'first work post',
+    //         'user_id' => $user->id,//'user_id' => User::all()->random()->id,
+    //      'category_id' =>$work->id,//'category_id' => Category::all()->random()->id,
+    //        'slug' => 'first-work-post',
+    //         'excerpt' => '<p>Lorem ipsum dolor</p>',
+    //         'body' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>',
+    //     ]);
+
+    //     Post::create([
+    //         'title' => 'second work post',
+    //         'user_id' => $user->id,//'user_id' => User::all()->random()->id,
+    //        'category_id' => $work->id,//'category_id' => Category::all()->random()->id,
+    //        'slug' => 'second-work-post',
+    //         'excerpt' => '<p>Lorem ipsum dolor</p>',
+    //         'body' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>',
+    //     ]);
+
+    //     Post::create([
+    //         'title' => 'first hobbies post',
+    //         'user_id' => $user->id,//'user_id' => User::all()->random()->id,
+    //         'category_id' => $hobbies->id,//'category_id' => Category::all()->random()->id,
+    //         'slug' => 'first-hobbies-post',
+    //         'excerpt' => '<p>Lorem ipsum dolor</p>',
+    //         'body' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>',
+    //     ]);
+
+    //     Post::create([
+    //         'title' => 'second hobbies post',
+    //         'user_id' => $user->id,//'user_id' => User::all()->random()->id,
+    //         'category_id' => $hobbies->id,//'category_id' => Category::all()->random()->id,
+    //         'slug' => 'second-hobbies-post',
+    //         'excerpt' => '<p>Lorem ipsum dolor</p>',
+    //         'body' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>',
+    //     ]);
+     }
 }

@@ -15,10 +15,15 @@ class UserFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    //I wrote from laravel 8 video
+//    protected $model = User::class;
+
     public function definition(): array
     {
         return [
+
             'name' => fake()->name(),
+            'username' => fake()->unique()->userName(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

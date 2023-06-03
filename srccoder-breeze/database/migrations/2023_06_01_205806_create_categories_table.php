@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');//foreignId is a shortcut for unsignedBigInteger
-            $table->string('slug')->unique();//slug is a url friendly version of the title
+            $table->string('name')->unique();//foreignId is a shortcut for unsignedBigInteger
+            $table->string('slug')->unique();//->unique();//slug is a url friendly version of the title
             $table->timestamps();
         });
     }
