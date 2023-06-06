@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class BlogPost extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        //'id',
-        'title', 
-        'body', 
-        'user_id'
-    ];
-
+//    protected $fillable = [
+//        //'id',
+//        'title',
+//        'body',
+//        'user_id'
+//    ];
+    protected $guarded = [];
 }

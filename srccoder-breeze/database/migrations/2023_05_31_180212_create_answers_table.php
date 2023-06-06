@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
-//mine
-            $table->string('user_id');
-            $table->string('question_id');
-            $table->text('body');
-            $table->text('code_body');
-//endmine   
+            $table->foreignId('user_id');
+            $table->foreignId('question_id');
+            $table->text('note');
+            $table->longText('code_body');
+            $table->string('slug')->unique();//slug is a url friendly version of the title
             $table->timestamps();
         });
     }

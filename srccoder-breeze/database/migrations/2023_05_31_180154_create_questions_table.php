@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->text('user_id'); // user_id of our question
-            $table->text('title');  // Title of our question          
-            $table->text('body');   // Body of our question                  
-            $table->text('bounty_id');
-            $table->text('programming_language_id');
-            $table->text('technology_catagory_id');
+            $table->foreignId('user_id'); // user_id of our question
+            $table->text('title');  // Title of our question
+            $table->longText('body');   // Body of our question
+            $table->foreignId('bounty_id');
+            $table->foreignId('programming_language_id');
+            $table->foreignId('technology_category_id');
+            $table->string('slug')->unique();//slug is a url friendly version of the title
+            $table->boolean('is_answered')->default(false);
             $table->timestamps();
         });
     }

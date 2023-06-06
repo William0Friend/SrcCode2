@@ -8,10 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class QuestionTechnologyCatagory extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        //'id',
-        'user_id',
-        'question_id',
-        'technology_catagory_id',
-    ];
+//    protected $fillable = [
+//        //'id',
+//        'user_id',
+//        'question_id',
+//        'technology_catagory_id',
+//    ];
+    public function question(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Question::class);
+    }
 }

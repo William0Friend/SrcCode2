@@ -27,6 +27,61 @@ Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
 Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
+// SRCCODER ROUTES
+Route::get('/srccoder', [\App\Http\Controllers\SrcCoderController::class, 'index']);
+Route::get('/srccoder/about', [\App\Http\Controllers\RegisterRecaptchaController::class, 'about']);
+Route::get('/srccoder/register_recaptcha', [\App\Http\Controllers\RegisterRecaptchaController::class, 'register']);
+
+// QUESTIONS ROUTES
+// The route we have created to show all blog posts
+Route::get('/questions', [\App\Http\Controllers\BlogPostController::class, 'index']);
+//route to show one post
+Route::get('/questions/{question}', [\App\Http\Controllers\QuestionController::class, 'show']);
+Route::get('/questions/create/post', [\App\Http\Controllers\QuestionController::class, 'create']); //shows create post form
+Route::post('/questions/create/post', [\App\Http\Controllers\QuestionController::class, 'store']); //saves the created post to the databse
+Route::get('/questions/{question}/edit', [\App\Http\Controllers\QuestionController::class, 'edit']); //shows edit post form
+Route::put('/questions/{question}/edit', [\App\Http\Controllers\QuestionController::class, 'update']); //commits edited post to the database
+Route::delete('/questions/{question}', [\App\Http\Controllers\QuestionController::class, 'destroy']); //deletes post from the database
+
+//BLOG ROUTES
+// The route we have created to show all blog posts
+Route::get('/answers', [\App\Http\Controllers\AnswerController::class, 'index']);
+//route to show one post
+Route::get('/answers/{answer}', [\App\Http\Controllers\AnswerController::class, 'show']);
+Route::get('/answers/create/post', [\App\Http\Controllers\BlogPostController::class, 'create']); //shows create post form
+Route::post('/answers/create/post', [\App\Http\Controllers\BlogPostController::class, 'store']); //saves the created post to the databse
+Route::get('/answers/{answer}/edit', [\App\Http\Controllers\BlogPostController::class, 'edit']); //shows edit post form
+Route::put('/answers/{answer}/edit', [\App\Http\Controllers\BlogPostController::class, 'update']); //commits edited post to the database
+Route::delete('/answers/{answer}', [\App\Http\Controllers\BlogPostController::class, 'destroy']); //deletes post from the database
+
+//BLOG ROUTES
+// The route we have created to show all blog posts
+Route::get('/blog', [\App\Http\Controllers\BlogPostController::class, 'index']);
+//route to show one post
+Route::get('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'show']);
+Route::get('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'create']); //shows create post form
+Route::post('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'store']); //saves the created post to the databse
+Route::get('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::class, 'edit']); //shows edit post form
+Route::put('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::class, 'update']); //commits edited post to the database
+Route::delete('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'destroy']); //deletes post from the database
+
+//DEFAULT BREEZE ROUTES
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+
 //Route::post('logout', [LogOutController::class, 'store'])->middleware('auth');
 /*
 |--------------------------------------------------------------------------
@@ -96,34 +151,5 @@ Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth'
 //    return view('blog');
 //});
 //
-//// The route we have created to show all blog posts
-//Route::get('/blog', [\App\Http\Controllers\BlogPostController::class, 'index']);
-////route to show one post
-//Route::get('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'show']);
-//Route::get('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'create']); //shows create post form
-//Route::post('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'store']); //saves the created post to the databse
-//
-//Route::get('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::class, 'edit']); //shows edit post form
-//
-//Route::put('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::class, 'update']); //commits edited post to the database
-//
-//Route::delete('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'destroy']); //deletes post from the database
-
 
 //end mine
-//default breeze
-//Route::get('/welcome', function () {
-//    return view('welcome');
-//});
-//
-//Route::get('/dashboard', function () {
-//    return view('dashboard');
-//})->middleware(['auth', 'verified'])->name('dashboard');
-//
-//Route::middleware('auth')->group(function () {
-//    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-//});
-//
-//require __DIR__.'/auth.php';

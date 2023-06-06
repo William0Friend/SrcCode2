@@ -15,6 +15,15 @@ return new class extends Migration
             $table->id();
             // added
             $table->string('username')->unique();
+            $table->integer('reputation')->default(0);
+            // $table->boolean('is_admin')->default(false);
+            // end added
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
             //$table->string('password');
             //$table->string('email')->unique();
             //$table->string('reputation')->default('0');
@@ -33,15 +42,7 @@ return new class extends Migration
             // $table->string('stackoverflow')->default('No stackoverflow yet');
             // $table->string('devto')->default('No devto yet');
 
-            //table->time
-            // $table->boolean('is_admin')->default(false);
-            // end added
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+
         });
     }
 

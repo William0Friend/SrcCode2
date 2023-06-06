@@ -8,11 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Images extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'id',
-        'file_name',
-        'uploaded_on',
-        'status',
-        'user_id',
-    ];
+//    protected $fillable = [
+//        'id',
+//        'file_name',
+//        'uploaded_on',
+//        'status',
+//        'user_id',
+//    ];
+    protected $guarded = [];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

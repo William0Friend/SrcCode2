@@ -43,17 +43,20 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function posts(){
+    public function posts(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
         return $this->hasMany(Post::class);
     }
 
     //eloquent accessor
-    public function getUsernameAttribute($username){
+    public function getUsernameAttribute($username): string
+    {
         return ucwords($username);
     }
 
     //eloquent mutators
-    public function setPasswordAttribute($password){
+    public function setPasswordAttribute($password): void
+    {
         $this->attributes['password'] = bcrypt($password);
     }
 }

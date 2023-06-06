@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Bounties extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'id',
-        'user_id',
-        'question_id',
-        'body',
-        'code_body',
-    ];
+//    protected $fillable = [
+//        'id',
+//        'user_id',
+//        'question_id',
+//        'body',
+//        'code_body',
+//    ];
+    protected $guarded = [];
 }
