@@ -13,6 +13,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    {{--Tailwind--}}
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 </head>
 
 <body>
@@ -27,7 +33,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/srccoder">Home</a>
                     </li>
 
                     @if (!isset($_SESSION["loggedin"]))
@@ -36,10 +42,10 @@
                         <!--                     <a class="nav-link" href="Register.php" title="Register">Register</a> -->
                         <!--                 </li> -->
                         <li class="nav-item">
-                            <a class="nav-link" href="Register_ReCAPTCHA" title="Register">Register</a>
+                            <a class="nav-link" href="/srccoder/register_recaptcha" title="Register">Register</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Login.php" title="Login">Login</a>
+                            <a class="nav-link" href="/srccoder/login" title="Login">Login</a>
                         </li>
 
                     @endif
@@ -49,23 +55,23 @@
                     @if (isset($_SESSION["loggedin"]))
 
                         <li class="nav-item">
-                            <a class="nav-link" href="User.php" title="User">User</a>
+                            <a class="nav-link" href="/srcoder/user" title="User">User</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="Post_Question_Form.php" title="Post Question">Post</a>
+                            <a class="nav-link" href="/questions" title="Post Question">Post</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Sell_Source_Code.php" title="Sell Source Code">Sell</a>
+                            <a class="nav-link" href="/answers" title="Sell Source Code">Sell</a>
                         </li>
 
                     @endif
 
                     <li class="nav-item">
-                        <a class="nav-link" href="AboutUs.php" title="Register">About</a>
+                        <a class="nav-link" href="/srccoder/about" title="Register">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Browse_Questions.php" title="Browse">Browse Questions</a>
+                        <a class="nav-link" href="/srccoder/browse" title="Browse">Browse Questions</a>
                     </li>
                 </ul>
             </div>

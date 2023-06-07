@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
-use App\Models\Answer;
+use App\Models\Answers;
 
 class AnswerController extends Controller
 {
@@ -60,7 +60,7 @@ class AnswerController extends Controller
         //
         //return $blogPost; //returns the fetched posts
         return view('answer.show', [
-            'post' => $answer,
+            'post' => $answer
         ]); //returns the view with the post
     }
 
@@ -70,33 +70,35 @@ class AnswerController extends Controller
     public function edit(Answer $answer)
     {
         //
-        return view('blog.edit', [
-            'post' => $blogPost,
+        return view('answer.edit', [
+            'post' => $answer
         ]); //returns the edit view with the post
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, BlogPost $blogPost)
+    public function update(Request $request, Answers $answer)
     {
         //
-        $blogPost->update([
-            'title' => $request->title,
-            'body' => $request->body
+        $answer->update([
+            'note' => $request->note,
+            'code_body' => $request->code_body,
+//            'user_id' => $request->user_id,
+//            'question_id' => $request->question_id
         ]);
 
-        return redirect('blog/' . $blogPost->id);
+        return redirect('answers/' . $answer->id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(BlogPost $blogPost)
+    public function destroy(Answers $answer)
     {
         //
-        $blogPost->delete();
+        $answer->delete();
 
-        return redirect('/blog');
+        return redirect('/answer');
     }
 }

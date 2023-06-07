@@ -21,7 +21,9 @@
             href="/?category={{ $category->slug}}&{{ http_build_query(request()->except('category', 'page')) }} }}"
             :active='request()->is("categories/.{$category->slug}")'
         >{{ucwords($category->name)}}
-        </x-my-dropdown-item>http_build_query(request()->except('category')
+        </x-my-dropdown-item>
+        
+        {{-- http_build_query(request()->except('category') --}}
 
     @endforeach
 </x-my-dropdown>

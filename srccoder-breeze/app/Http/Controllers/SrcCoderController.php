@@ -21,6 +21,43 @@ class SrcCoderController extends Controller
         //return the about page
         return view('srccoder.about');
     }
+
+    public function register()
+    {
+        //return the register page
+        return view('srccoder.register_recaptcha');
+    }
+
+    public function browse()
+    {
+        //return the browse page
+        return view('srccoder.browse');
+    }
+
+    public function login()
+    {
+        //return the login page
+        return view('srccoder.login');
+    }
+//    public function blog()
+//    {
+//        //return the blog page
+//        return view('srccoder.blog');
+//    }
+//
+//     TODO: add services page
+    public function services()
+    {
+        //return the services page
+        return view('srccoder.services');
+    }
+//    TODO: add contact page
+    public function contact()
+    {
+        //return the contact page
+        return view('srccoder.contact');
+    }
+
     public function store(){
         //validate the user
         $attributes = request()->validate([

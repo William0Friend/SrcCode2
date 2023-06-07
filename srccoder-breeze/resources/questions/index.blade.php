@@ -1,5 +1,6 @@
-@extends('layouts.app')
-@section('content')
+{{--@extends('layouts.app')--}}
+{{--@section('content')--}}
+<x-srccoder>
     <div class="container">
         <div class="row">
             <div class="pt-2 col-12">
@@ -12,7 +13,7 @@
                         <p>Create new Post</p>
                         <a href="/blog/create/post" class="btn btn-primary btn-sm">Add Post</a>
                     </div>
-                </div>                
+                </div>
                 @forelse($posts as $post)
                     <ul>
                         <li><a href="./blog/{{ $post->id }}">{{ ucfirst($post->title) }}</a></li>
@@ -23,4 +24,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-srccoder>

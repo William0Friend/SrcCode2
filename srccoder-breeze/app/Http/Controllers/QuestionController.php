@@ -4,49 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
-use App\Models\Question;
+use App\Models\Questions;
 class QuestionController extends Controller
 {
-//
-//    public function index()
-//    {
-//        // show all blog posts
-//    }
-//
-//    public function create()
-//    {
-//        //show form to create a question post
-//    }
-//
-//
-//    public function store(Request $request)
-//    {
-//        //store a new question post
-//    }
-//
-//    public function show(Question $question)
-//    {
-//        //show a question post
-//    }
-//
-//
-//    public function edit(Question $question)
-//    {
-//        //show form to edit the post
-//    }
-//
-//
-//    public function update(Request $request, Question $question)
-//    {
-//        //save the edited post
-//    }
-//
-//
-//    public function destroy(Question $question)
-//    {
-//        //delete a post
-//    }
-
     /**
      * Display a listing of the resource.
      */
@@ -56,8 +16,8 @@ class QuestionController extends Controller
         $questions = Questions::all(); //fetch all blog posts from DB
         //raw json
         //return $posts; //returns the fetched posts
-        return view('srccode.index', [
-            'posts' => $posts,
+        return view('questions.index', [
+            'posts' => $questions,
         ]); //returns the view with posts
     }
 
@@ -67,7 +27,7 @@ class QuestionController extends Controller
     public function create()
     {
         //
-        return view('blog.create');
+        return view('questions.create');
     }
 
     /**
@@ -76,60 +36,84 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         //
-        $newPost = BlogPost::create([
+        //$table->id();
+        //$table->foreignId('user_id'); // user_id of our question
+        //$table->text('title');  // Title of our question
+        //$table->longText('body');   // Body of our question
+        //$table->foreignId('bounty_id');
+        //$table->foreignId('programming_language_id');
+        //$table->foreignId('technology_category_id');
+        //$table->string('slug')->unique();//slug is a url friendly version of the title
+        //$table->boolean('is_answered')->default(false);
+        //$table->timestamps();
+
+        $newQuestion = Questions::create([
             'title' => $request->title,
-            'body' => $request->body,
-            'user_id' => 1
+            'body' => $request->body
+            //need to set these to null for now
+            //TODO: fix this
+//            'user_id' => $request->user_id,
+//            'bounty_id' => $request->bounty_id,
+//            'programming_language_id' => $request->programming_language_id,
+//            'technology_category_id' => $request->technology_category_id,
+//            'slug' => $request->slug,
+//            'is_answered' => $request->is_answered
         ]);
 
-        return redirect('blog/' . $newPost->id);
+        return redirect('question/' . $newQuestion->id);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(BlogPost $blogPost)
+    public function show(Questions $question)
     {
         //
         //return $blogPost; //returns the fetched posts
-        return view('blog.show', [
-            'post' => $blogPost,
+        return view('questions.show', [
+            'post' => $question,
         ]); //returns the view with the post
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(BlogPost $blogPost)
+    public function edit(Questions $question)
     {
         //
-        return view('blog.edit', [
-            'post' => $blogPost,
+        return view('question.edit', [
+            'post' => $question,
         ]); //returns the edit view with the post
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, BlogPost $blogPost)
+    public function update(Request $request, Question $question)
     {
         //
-        $blogPost->update([
+        $question->update([
             'title' => $request->title,
-            'body' => $request->body
+            'body' => $request->body,
+//            'user_id' => $request->user_id,
+//            'bounty_id' => $request->bounty_id,
+//            'programming_language_id' => $request->programming_language_id,
+//            'technology_category_id' => $request->technology_category_id,
+//            'slug' => $request->slug,
+//            'is_answered' => $request->is_answered
         ]);
 
-        return redirect('blog/' . $blogPost->id);
+        return redirect('questions/' . $question->id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(BlogPost $blogPost)
+    public function destroy(Questions $question)
     {
         //
-        $blogPost->delete();
+        $question->delete();
 
-        return redirect('/blog');
+        return redirect('/questions');
     }
 }

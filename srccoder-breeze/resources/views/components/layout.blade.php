@@ -36,20 +36,20 @@
                 </a>
             </div>
 
-            <div class="mt-8 md:mt-0 flex items-center ">
+            <div class="flex items-center mt-8 md:mt-0 ">
                 @auth
                     <span class="text-xs font-bold uppercase">Welcome, {{auth()->user()->name}}</span>
-                    <form method="POST" action="/logout" class="text-xs font-semibold text-blue-500 ml-6">
+                    <form method="POST" action="/logout" class="ml-6 text-xs font-semibold text-blue-500">
                         @csrf
                         <button type="submit">Log Out</button>
                     </form>
 
-                    <a href="/dashboard" class="text-xs font-bold uppercase ml-6">Dashboard</a>
-                    <a href="/" class="text-xs font-bold uppercase ml-6">Post</a>
+                    <a href="/dashboard" class="ml-6 text-xs font-bold uppercase">Dashboard</a>
+                    <a href="/" class="ml-6 text-xs font-bold uppercase">Post</a>
                 @endauth
                 @guest
                     <a href="/register" class="text-xs font-bold uppercase">Register</a>
-                    <a href="/login" class="text-xs font-bold uppercase ml-6">Log In</a>
+                    <a href="/login" class="ml-6 text-xs font-bold uppercase">Log In</a>
                     @endguest
                 <a href="#" class="px-5 py-3 ml-3 text-xs font-semibold text-white uppercase bg-blue-500 rounded-full">
                     Subscribe for Updates

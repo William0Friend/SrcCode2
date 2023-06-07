@@ -1,13 +1,15 @@
-@extends('layouts.app')
-@section('content')
+{{--@extends('layouts.app')--}}
+{{--@section('content')--}}
+@props(['question']);
+<x-srccoder>
     <div class="container">
         <div class="row">
             <div class="pt-2 col-12">
-                <a href="/blog" class="btn btn-outline-primary btn-sm">Go back</a>
+                <a href="/questions" class="btn btn-outline-primary btn-sm">Go back</a>
                 <h1 class="display-one">{{ ucfirst($post->title) }}</h1>
-                <p>{!! $post->body !!}</p> 
+                <p>{!! $post->body !!}</p>
                 <hr>
-                <a href="/blog/{{ $post->id }}/edit" class="btn btn-outline-primary">Edit Post</a>
+                <a href="/question/{{ $post->id }}/edit" class="btn btn-outline-primary">Edit Post</a>
                 <br><br>
                 <form id="delete-frm" class="" action="" method="POST">
                     @method('DELETE')
@@ -17,4 +19,5 @@
             </div>
         </div>
     </div>
-@endsection
+</x-srccoder>
+{{--@endsection--}}
