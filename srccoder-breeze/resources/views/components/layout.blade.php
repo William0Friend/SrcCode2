@@ -12,6 +12,10 @@
 <body class="container">
    {{$slot}}
 </body> --}}
+Debugbar::info($object);
+Debugbar::error('Error!');
+Debugbar::warning('Watch out…');
+Debugbar::addMessage('Another message', 'mylabel');
 
 <!doctype html>
 

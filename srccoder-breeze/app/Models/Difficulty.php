@@ -8,14 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Difficulty extends Model
 {
     use HasFactory;
-//    protected $fillable = [
-//        'id',
-//        'question_id',
-//        'difficulty',
-//    ];
-    protected $guarded = [];
-
-    public function questions(){
-        return $this->belongsTo(Questions::class);
-    }
 }

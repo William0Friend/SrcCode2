@@ -1,9 +1,10 @@
-use Spatie\Laravel
-
+use         Spatie\Html\Elements\Form;
 <x-srccoder>
 <body>
 
 <?php
+$form = Form::create('/foo/bar', 'POST');
+
 echo Form::open(array('url' => 'foo/bar'));
 echo Form::text('username','Username');
 echo '<br/>';

@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.blog')
 
 @section('content')
+
+<x-debugbar/>
 
     <div class="container">
         <div class="row">

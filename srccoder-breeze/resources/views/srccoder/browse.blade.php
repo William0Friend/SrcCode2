@@ -39,6 +39,7 @@
 
 {{--$questions = $result->fetch_all(MYSQLI_ASSOC); @endphp--}}
 
+{{--  use App\Models\Questions;  --}}
 
 <x-srccoder>
     <!-- DataTables CSS -->
@@ -59,9 +60,10 @@
             <th>Actions</th>
             <th>Q & A</th>
         </tr>
-        </thead>
+        </thead> 
         <tbody>
-
+            
+        {{--  $questions = Questions::all();  --}}
         @foreach ($questions as $question)
 
             <tr>
@@ -70,8 +72,9 @@
                 <td>{!! htmlspecialchars($question["body"]) !!}</td>
                 <td>{!! htmlspecialchars($question["bounty"]) !!}</td>
                 <td>{!! htmlspecialchars($question["timestamp"]) !!}</td>
-                <td>
-                    <a href="Question_Individual_Generator.php?id={!! htmlspecialchars($question["id"]) !!}" class="btn btn-danger">Question</a></td>
+                {{--  <td>
+                    <a href="/srccoder/question_maker?id={!! htmlspecialchars($question["id"]) !!}" class="btn btn-danger">Question</a>
+                </td>  --}}
                 <td>
                     <button type="button" class="btn btn-primary sellButton" data-bs-toggle="modal" data-bs-target="#sellSourceCodeModal" data-question-id="{!! htmlspecialchars($question["id"]) !!}">Answer</button>
                 </td>
@@ -94,9 +97,9 @@
                         <input type="hidden" id="questionIdInput" name="questionId" />
                         <h6 class="mb-2">Sell Source Code:</h6>
                         <input type="text" id="title" name="title" placeholder="Source Code Title" class="form-control" />
-                        <textarea id="description" name="description" placeholder="Source Code Description" class="form-control mt-2" rows="4"></textarea>
-                        <textarea id="code" name="code" placeholder="Paste your source code here" class="form-control mt-2" rows="6"></textarea>
-                        <button type="submit" class="btn btn-secondary mt-2">Sell</button>
+                        <textarea id="description" name="description" placeholder="Source Code Description" class="mt-2 form-control" rows="4"></textarea>
+                        <textarea id="code" name="code" placeholder="Paste your source code here" class="mt-2 form-control" rows="6"></textarea>
+                        <button type="submit" class="mt-2 btn btn-secondary">Sell</button>
                     </form>
                 </div>
             </div>

@@ -18,8 +18,6 @@ class DifficultyFactory extends Factory
     {
         return [
             //
-            'question_id' => Question::factory(), //Generates a Question from factory and extracts id
-            'difficulty' => $this->faker->randomElements(['easy', 'medium', 'hard', 'No Idea']) //generates random non zero digit
         ];
     }
 }

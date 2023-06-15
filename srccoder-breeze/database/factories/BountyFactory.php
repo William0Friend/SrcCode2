@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Bounty>
  */
 class BountyFactory extends Factory
 {
@@ -18,9 +18,6 @@ class BountyFactory extends Factory
     {
         return [
             //
-            'user_id' => User::factory(), //Generates a User from factory and extracts id
-            'question_id' => Question::factory(), //Generates a Question from factory and extracts id
-            'amount' => $this->faker->randomDigitNotZero() //generates random non zero digit
         ];
     }
 }

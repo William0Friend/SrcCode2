@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ProgrammingLanguage>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Programming_Language>
  */
 class ProgrammingLanguageFactory extends Factory
 {
@@ -18,7 +18,6 @@ class ProgrammingLanguageFactory extends Factory
     {
         return [
             //
-            'programming_language' => $this->facker->word()
         ];
     }
 }

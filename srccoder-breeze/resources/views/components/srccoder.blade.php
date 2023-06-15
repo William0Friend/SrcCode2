@@ -1,5 +1,11 @@
 @php # Initialize session
   session_start(); @endphp
+
+    Debugbar::info($object);
+  Debugbar::error('Error!');
+  Debugbar::warning('Watch out…');
+  Debugbar::addMessage('Another message', 'mylabel');
+  
     <!doctype html>
 <html lang="en">
 <head>
@@ -91,10 +97,10 @@
 </script>
 <!--Footer-->
 <div class="container">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <p class="col-md-4 mb-0 text-muted">© 2023 Company, Inc</p>
+    <footer class="flex-wrap py-3 my-4 d-flex justify-content-between align-items-center border-top">
+        <p class="mb-0 col-md-4 text-muted">© 2023 Company, Inc</p>
 
-        <!--<a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+        <!--<a href="/" class="mb-3 col-md-4 d-flex align-items-center justify-content-center mb-md-0 me-md-auto link-dark text-decoration-none">
             <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
         </a>-->
 
@@ -103,11 +109,11 @@
         </svg>
 
         <ul class="nav col-md-4 justify-content-end">
-            <li class="nav-item"><a href="Index.html" class="nav-link px-2 text-muted">Home</a></li>
-            <li class="nav-item"><a href="Features.html" class="nav-link px-2 text-muted">Features</a></li>
-            <li class="nav-item"><a href="Pricing.html" class="nav-link px-2 text-muted">Pricing</a></li>
-            <li class="nav-item"><a href="FAQ.html" class="nav-link px-2 text-muted">FAQs</a></li>
-            <li class="nav-item"><a href="AboutUs.html" class="nav-link px-2 text-muted">About</a></li>
+            <li class="nav-item"><a href="Index.html" class="px-2 nav-link text-muted">Home</a></li>
+            <li class="nav-item"><a href="Features.html" class="px-2 nav-link text-muted">Features</a></li>
+            <li class="nav-item"><a href="Pricing.html" class="px-2 nav-link text-muted">Pricing</a></li>
+            <li class="nav-item"><a href="FAQ.html" class="px-2 nav-link text-muted">FAQs</a></li>
+            <li class="nav-item"><a href="AboutUs.html" class="px-2 nav-link text-muted">About</a></li>
         </ul>
     </footer>
 </div>

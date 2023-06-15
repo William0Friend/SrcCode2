@@ -16,10 +16,12 @@
         "spatie/yaml-front-matter": "^2.0"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.8",
         "fakerphp/faker": "^1.9.1",
         "laravel/breeze": "^1.21",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
+        "laravel/telescope": "^4.14",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
         "phpunit/phpunit": "^10.1",
@@ -54,7 +56,9 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+                "laravel/telescope"
+            ]
         }
     },
     "config": {
@@ -68,4 +72,5 @@
     },
     "minimum-stability": "stable",
     "prefer-stable": true
+    
 }
