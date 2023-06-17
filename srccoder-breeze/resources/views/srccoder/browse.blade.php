@@ -40,8 +40,10 @@
 {{--$questions = $result->fetch_all(MYSQLI_ASSOC); @endphp--}}
 
 {{--  use App\Models\Questions;  --}}
-
+<x-app>
 <x-srccoder>
+    use Illuminate\Support\Facades\DB;
+
     <!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
     <!-- DataTables JS -->
@@ -65,9 +67,17 @@
             
         {{--  $questions = Questions::all();  --}}
         @foreach ($questions as $question)
-
+        {{--  $username = DB::select('SELECT username from users LEFT JOIN questions ON (questions.user_id = users.id)',);  --}}
+        $username = DB::table('users')
+        ->join('questions', 'questions.user_id', '=', 'users.id')
+        ->select('users.username')
+        ->where('questions.id', '=', $question["id"])
+        ->get();
+        {{--  $username = DB::select
+        ('SELECT username from users LEFT JOIN questions ON (questions.user_id = users.id)',);
             <tr>
-                <td>{!! htmlspecialchars($question["username"]) !!}</td>
+                {{--  <td>{!! htmlspecialchars($question["user_id"]  ) !!}</td>  --}}
+                <td>{!! htmlspecialchars($username) !!}</td>
                 <td><a href="Question_Individual_Generator.php?id={!! htmlspecialchars($question["id"]) !!}">{!! htmlspecialchars($question["title"]) !!}</a></td>
                 <td>{!! htmlspecialchars($question["body"]) !!}</td>
                 <td>{!! htmlspecialchars($question["bounty"]) !!}</td>
@@ -147,3 +157,4 @@
 
 
 </x-srccoder>
+</x-app>

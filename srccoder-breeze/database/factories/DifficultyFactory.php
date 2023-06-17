@@ -18,6 +18,7 @@ class DifficultyFactory extends Factory
     {
         return [
             //
+            'difficulty' => $this->faker->randomElements(['easy', 'medium', 'hard', 'No Idea'])
         ];
     }
 }

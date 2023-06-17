@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\User;
 class RegisterController extends Controller
 {
-    //
-//    public function index(){
-//        //return view('register.index');
-//    }
+    
+   public function index(){
+       return view('register.index');
+   }
     public function create(){
         //return 'hello register';
            return view('register.create');

@@ -32,7 +32,10 @@ class DatabaseSeeder extends Seeder
         // allow for specific user, 5 posts by same user, must go before post factory
         $user = User::factory()->create(
             [
-                'name' => 'John Doe'
+                'name' => 'John Doe',
+                'username' => 'johndoe',
+                'email' => 'johndoe@example.com',
+                'password' => 'password'
             ]
         );
         Post::factory(5)->create(
@@ -48,7 +51,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        //srccoder
+        // //srccoder
         Question::factory(5)->create();
         Question::factory(5)->create(
             [
@@ -61,7 +64,7 @@ class DatabaseSeeder extends Seeder
                  'user_id' => $user->id
              ]
          );
-        //Sales::factory(5)->create();
+        // Sales::factory(5)->create();
         // Sales::factory(5)->create(
         //     [
         //         'user_id' => $user->id

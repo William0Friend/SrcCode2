@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('bounties', function (Blueprint $table) {
             $table->id();
+            // $table->foreignId('question_id');
+            // $table->foreignId('user_id');
+            $table->integer('bounty')->default(0);
+//            $table->boolean('is_accepted')->default(false);
             $table->timestamps();
         });
     }

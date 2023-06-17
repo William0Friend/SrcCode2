@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('difficulties', function (Blueprint $table) {
             $table->id();
+            $table->enum('difficulty', ['easy', 'medium', 'hard', 'expert', 'No Idea'])->default('No Idea');
             $table->timestamps();
         });
     }

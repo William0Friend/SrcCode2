@@ -18,6 +18,7 @@ class BountyFactory extends Factory
     {
         return [
             //
+            'bounty'=> $this->faker->randomDigitNotZero()
         ];
     }
 }

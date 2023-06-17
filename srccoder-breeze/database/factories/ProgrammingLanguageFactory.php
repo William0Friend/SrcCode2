@@ -18,6 +18,7 @@ class ProgrammingLanguageFactory extends Factory
     {
         return [
             //
+            'programming_language' => $this->faker->unique()->word()
         ];
     }
 }
