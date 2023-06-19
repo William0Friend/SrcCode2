@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use ReCaptcha\ReCaptcha;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -45,4 +46,16 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+   /**
+     * ReCaptcha validation
+     */
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+            'g-recaptcha-response' => ['required', new ReCaptcha(config('services.recaptcha.secret_key'))],
+        ]);
+    }
+
 }

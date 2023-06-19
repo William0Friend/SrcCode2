@@ -14,8 +14,8 @@ class AnswerController extends Controller
         $answers = Answer::all(); //fetch all blog posts from DB
         //raw json
         //return $posts; //returns the fetched posts
-        return view('answers.index', [
-            'answer' => $answers,
+        return view('answer.index', [
+            'answers' => $answers,
         ]); //returns the view with posts
     }
 
@@ -25,7 +25,7 @@ class AnswerController extends Controller
     public function create()
     {
         //
-        return view('answers.create');
+        return view('answer.create');
     }
 
     /**
@@ -59,7 +59,7 @@ class AnswerController extends Controller
         //
         //return $blogPost; //returns the fetched posts
         return view('answer.show', [
-            'post' => $answer
+            'answer' => $answer
         ]); //returns the view with the post
     }
 
@@ -70,7 +70,7 @@ class AnswerController extends Controller
     {
         //
         return view('answer.edit', [
-            'post' => $answer
+            'answer' => $answer
         ]); //returns the edit view with the post
     }
 

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Question;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,7 @@ class ProgrammingLanguageFactory extends Factory
     {
         return [
             //
+             //Generates a Question from factory and extracts id
             'programming_language' => $this->faker->unique()->word()
         ];
     }

@@ -1,6 +1,6 @@
 <header class="max-w-xl mx-auto mt-20 text-center"> 
     <h1 class="text-4xl">
-        Latest <span class="text-blue-500">Laravel From Scratch</span> News
+        Latest <span class="text-blue-500"> {{ config('app.name')}} </span> News
     </h1>
 
     <div class="mt-4 space-y-2 lg:space-y-0 lg:space-x-4">

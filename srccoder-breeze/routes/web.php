@@ -28,8 +28,7 @@ use Illuminate\Support\Facades\File;
 // Route::get('/',[PostController::class, 'index'])->name('home');
 
 //give me the slug where the post that matches you provided Post::where('slug', $post)->firstOrFail();
-// Route::get('/posts',[PostController::class, 'index'])->name('home');
-
+Route::get('/',[PostController::class, 'index'])->name('home');
 Route::get('/posts/{post:slug}', [PostController::class, 'show']);//->name('post');
 
 //BLOG ROUTES
@@ -71,17 +70,22 @@ Route::delete('/question/{question}', [\App\Http\Controllers\QuestionController:
 
 //BLOG ROUTES
 // The route we have created to show all answer posts
-Route::get('answer', [\App\Http\Controllers\AnswerController::class, 'index']);
+Route::get('/answer', [\App\Http\Controllers\AnswerController::class, 'index']);
 //route to show one post
-Route::get('answer/{answer}', [\App\Http\Controllers\AnswerController::class, 'show']);
-Route::get('answer/create/post', [\App\Http\Controllers\AnswerController::class, 'create']); //shows create post form
-Route::post('answer/create/post', [\App\Http\Controllers\AnswerController::class, 'store']); //saves the created post to the databse
-Route::get('answer/{answer}/edit', [\App\Http\Controllers\AnswerController::class, 'edit']); //shows edit post form
-Route::put('answer/{answer}/edit', [\App\Http\Controllers\AnswerController::class, 'update']); //commits edited post to the database
-Route::delete('answer/{answer}', [\App\Http\Controllers\AnswerController::class, 'destroy']); //deletes post from the database
+Route::get('/answer/{answer}', [\App\Http\Controllers\AnswerController::class, 'show']);
+Route::get('/answer/create/post', [\App\Http\Controllers\AnswerController::class, 'create']); //shows create post form
+Route::post('/answer/create/post', [\App\Http\Controllers\AnswerController::class, 'store']); //saves the created post to the databse
+Route::get('/answer/{answer}/edit', [\App\Http\Controllers\AnswerController::class, 'edit']); //shows edit post form
+Route::put('/answer/{answer}/edit', [\App\Http\Controllers\AnswerController::class, 'update']); //commits edited post to the database
+Route::delete('/answer/{answer}', [\App\Http\Controllers\AnswerController::class, 'destroy']); //deletes post from the database
 
+
+//
+Route::get('/home', function () {
+    return view('home');
+});
 //DEFAULT BREEZE ROUTES
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
@@ -97,8 +101,9 @@ Route::get('/question', function () {
 
 
 Route::get('/browse-guest', function () {
-    return view('browse', [
-        'questions' => Question::all()
+    return view('browse-guest', [
+        'questions' => Question::all(),
+        'users' => User::all()
     ]);
 })->name('browse-guest');
 
@@ -120,7 +125,7 @@ Route::get('/blog-welcome', function () {
 })->middleware(['auth', 'verified'])->name('blog-welcome');
 
 
-Route::get('/posts', function () {
+Route::get('/posts/index', function () {
     return view('posts.index', [
         'posts' =>  Post::latest()->filter(request(['search', 'category', 'author']))->paginate(6)->withQueryString()
     ]);
@@ -135,14 +140,14 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-// FormController ROUTES
-Route::get('user/create', [ FormController::class, 'create' ]);
-Route::post('user/create', [ FormController::class, 'store' ]);
+// // FormController ROUTES
+// Route::get('user/create', [ FormController::class, 'create' ]);
+// Route::post('user/create', [ FormController::class, 'store' ]);
 
-// Form Example route
-Route::get('/form',function() {
-    return view('form');
-});
+// // Form Example route
+// Route::get('/form',function() {
+//     return view('form');
+// });
 
 //Route::post('logout', [LogOutController::class, 'store'])->middleware('auth');
 /*

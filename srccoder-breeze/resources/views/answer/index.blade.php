@@ -1,6 +1,7 @@
-@extends('layouts.blog')
-@section('content')
-<x-debugbar/>
+{{--  @extends('layouts.blog')
+@section('content')  --}}
+{{--  <x-debugbar/>  --}}
+<x-app>
     <div class="container">
         <div class="row">
             <div class="pt-2 col-12">
@@ -14,14 +15,15 @@
                         <a href="/answer/create/post" class="btn btn-primary btn-sm">Add Post</a>
                     </div>
                 </div>                
-                @forelse($posts as $post)
+                @forelse($answers as $answer)
                     <ul>
-                        <li><a href="./answer/{{ $post->id }}">{{ ucfirst($post->title) }}</a></li>
+                        <li><a href="./answer/{{ $answer->id }}">{{ ucfirst($answer->title) }}</a></li>
                     </ul>
                 @empty
-                    <p class="text-warning">No blog Posts available</p>
+                    <p class="text-warning">No answers available</p>
                 @endforelse
             </div>
         </div>
     </div>
-@endsection
+</x-app>
+{{--  @endsection  --}}

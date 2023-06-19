@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Question;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,7 @@ class BountyFactory extends Factory
     {
         return [
             //
+            'question_id' => Question::factory(), //Generates a Question from factory and extracts id
             'bounty'=> $this->faker->randomDigitNotZero()
         ];
     }

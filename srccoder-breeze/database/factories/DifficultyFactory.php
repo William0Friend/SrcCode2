@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Question;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,8 @@ class DifficultyFactory extends Factory
     {
         return [
             //
-            'difficulty' => $this->faker->randomElements(['easy', 'medium', 'hard', 'No Idea'])
+            'question_id' => Question::factory(), //Generates a Question from factory and extracts id
+            'difficulty' => $this->faker->randomElements(['easy', 'medium', 'hard', 'expert', 'No Idea'])
         ];
     }
 }

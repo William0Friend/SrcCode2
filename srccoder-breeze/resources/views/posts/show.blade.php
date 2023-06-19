@@ -67,8 +67,16 @@
                     <div>
                         <header>
                             <h3 class="font-bold">{{$post->author->name}}</h3>
-                            <p class="text-xs">Posted <time>{{$post->created_at->diffForHumans()}}</time></p>
+                            <p class="text-xs">
+                                Posted 
+                                <time>{{$post->created_at->diffForHumans()}}
+                                    </time>
+                                </p>
                         </header>
+                        
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam pariatur eius, veniam in quaerat quos officia sint exercitationem? Quod, corporis illum fuga perspiciatis quibusdam itaque deserunt error reiciendis obcaecati debitis.
+                        </p>
                     </div>
                     </article>
                 </section>

@@ -171,6 +171,8 @@ return [
         // App\Providers\TelescopeServiceProvider::class,
         Spatie\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        // ReCaptcha\ReCaptchaServiceProvider::class,
+
     ])->toArray(),
 
     /*
@@ -189,6 +191,7 @@ return [
         'Html' => Spatie\Html\Facades\Html::class,
         'Form' => Spatie\Html\Elements\Form::class,
         'Debugbar' => Barryvdh\Debugbar\Facade\Debugbar::class,
+        'ReCaptcha' => ReCaptcha\ReCaptchaFacade::class,
     ])->toArray(),
 
 ];
