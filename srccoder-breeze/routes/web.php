@@ -18,71 +18,29 @@ use Illuminate\Support\Facades\File;
 
 
 
-//video
+Route::get('/', [QuestionController::class, 'index'])->name('questions.index');
+// This will automatically create the necessary routes for the resourceful controller actions: index, create, store, show, edit, update, and destroy.
+Route::resource('questions', QuestionController::class);
+Route::resource('answers', AnswerController::class);
 
+Route::get('questions/browse', [QuestionController::class, 'browse'])->name('questions.browse');
 
-//middleware runs with and inspects the request before it reaches the controller
-// Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
-// Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
-// Route::get('/login', [SessionsController::class, 'create'])->middleware('guest');
-// Route::post('/login', [SessionsController::class, 'store'])->middleware('guest');
-// Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth');
-// Route::get('/',[PostController::class, 'index'])->name('home');
+Route::get('/questions/create', [QuestionController::class, 'create'])->name('questions.create');
+Route::post('/questions', [QuestionController::class, 'store'])->name('questions.store');
+Route::get('/questions/{slug}', [QuestionController::class, 'show'])->name('questions.show');
 
-//give me the slug where the post that matches you provided Post::where('slug', $post)->firstOrFail();
-Route::get('/posts',[PostController::class, 'index'])->name('home');
-Route::get('/posts/{post:slug}', [PostController::class, 'show']);//->name('post');
+Route::get('/questions/{slug}/answers/create', [AnswerController::class, 'create'])->name('answers.create');
+Route::post('/questions/{slug}/answers', [AnswerController::class, 'store'])->name('answers.store');
 
-//BLOG ROUTES
-// The route we have created to show all blog posts
-// Route::get('/blog/welcome', [\App\Http\Controllers\BlogPostController::class, 'welcome']);
-Route::get('/blog', [\App\Http\Controllers\BlogPostController::class, 'index']);
-//route to show one post
-Route::get('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'show']);
-Route::get('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'create']); //shows create post form
-Route::post('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'store']); //saves the created post to the databse
-Route::get('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::class, 'edit']); //shows edit post form
-Route::put('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::class, 'update']); //commits edited post to the database
-Route::delete('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'destroy']); //deletes post from the database
+Route::get('/questions/datatable', [QuestionController::class, 'getDataTable'])->name('questions.datatable');
+
+Route::get('/browse', [QuestionController::class, 'browse'])->name('questions.browse');
+
+Route::get('/about', [\App\Http\Controllers\SrccoderController::class, 'about'])->name('about');
+Route::get('/register_recaptcha', [\App\Http\Controllers\SrccoderController::class, 'register']);
 
 
 
-// SRCCODER ROUTES
-// Route::get('/srccoder', [\App\Http\Controllers\SrccoderController::class, 'index']);
-Route::get('/srccoder/about', [\App\Http\Controllers\SrccoderController::class, 'about']);
-Route::get('/srccoder/register_recaptcha', [\App\Http\Controllers\SrccoderController::class, 'register']);
-Route::get('/srccoder/login', [\App\Http\Controllers\SrccoderController::class, 'login']);
-Route::get('/srccoder/browse', [\App\Http\Controllers\SrccoderController::class, 'browse']);
-
-// login 
-
-
-
-
-// QUESTIONS ROUTES OLD
-// The route we have created to show all question posts
-//Route::get('question', [\App\Http\Controllers\QuestionController::class, 'index']);
-//route to show one post
-// Route::get('/question/{question}', [QuestionController::class, 'show']);
-// // Route::get('/question/create/post', [\App\Http\Controllers\QuestionController::class, 'create']); //shows create post form
-// // Route::post('/question/create/post', [\App\Http\Controllers\QuestionController::class, 'store']); //saves the created post to the databse
-// Route::get('/question/{question}/edit', [QuestionController::class, 'edit']); //shows edit post form
-// Route::put('/question/{question}/edit', [QuestionController::class, 'update']); //commits edited post to the database
-// Route::delete('/question/{question}', [QuestionController::class, 'destroy']); //deletes post from the database
-
-// Answer routes old
-// The route we have created to show all answer posts
-// Route::get('/answer', [AnswerController::class, 'index']);
-// //route to show one post
-// Route::get('/answer/{answer}', [AnswerController::class, 'show']);
-// // Route::get('/answer/create/post', [\App\Http\Controllers\AnswerController::class, 'create']); //shows create post form
-// // Route::post('/answer/create/post', [\App\Http\Controllers\AnswerController::class, 'store']); //saves the created post to the databse
-// Route::get('/answer/{answer}/edit', [AnswerController::class, 'edit']); //shows edit post form
-// Route::put('/answer/{answer}/edit', [AnswerController::class, 'update']); //commits edited post to the database
-// Route::delete('/answer/{answer}', [AnswerController::class, 'destroy']); //deletes post from the database
-
-
-//
 Route::get('/home', function () {
     return view('home');
 });
@@ -139,18 +97,24 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('questions', QuestionController::class);
-Route::get('questions/browse', [QuestionController::class, 'browse'])->name('questions.browse');
 
-Route::get('/', [QuestionController::class, 'index'])->name('questions.index');
-Route::get('/questions/create', [QuestionController::class, 'create'])->name('questions.create');
-Route::post('/questions', [QuestionController::class, 'store'])->name('questions.store');
-Route::get('/questions/{slug}', [QuestionController::class, 'show'])->name('questions.show');
+// Route::get('/browse', [\App\Http\Controllers\SrccoderController::class, 'browse']);
 
-Route::get('/questions/{slug}/answers/create', [AnswerController::class, 'create'])->name('answers.create');
-Route::post('/questions/{slug}/answers', [AnswerController::class, 'store'])->name('answers.store');
+//give me the slug where the post that matches you provided Post::where('slug', $post)->firstOrFail();
+Route::get('/posts',[PostController::class, 'index'])->name('home');
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);//->name('post');
 
-Route::get('/browse', [QuestionController::class, 'browse'])->name('questions.browse');
+//BLOG ROUTES
+// The route we have created to show all blog posts
+// Route::get('/blog/welcome', [\App\Http\Controllers\BlogPostController::class, 'welcome']);
+Route::get('/blog', [\App\Http\Controllers\BlogPostController::class, 'index']);
+//route to show one post
+Route::get('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'show']);
+Route::get('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'create']); //shows create post form
+Route::post('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'store']); //saves the created post to the databse
+Route::get('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::class, 'edit']); //shows edit post form
+Route::put('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::class, 'update']); //commits edited post to the database
+Route::delete('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'destroy']); //deletes post from the database
 
 require __DIR__.'/auth.php';
 
@@ -235,3 +199,55 @@ require __DIR__.'/auth.php';
 //
 
 //end mine
+
+//video
+
+
+//middleware runs with and inspects the request before it reaches the controller
+// Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
+// Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
+// Route::get('/login', [SessionsController::class, 'create'])->middleware('guest');
+// Route::post('/login', [SessionsController::class, 'store'])->middleware('guest');
+// Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth');
+// Route::get('/',[PostController::class, 'index'])->name('home');
+
+
+
+
+
+// SRCCODER ROUTES
+// Route::get('/srccoder', [\App\Http\Controllers\SrccoderController::class, 'index']);
+// Route::get('/srccoder/about', [\App\Http\Controllers\SrccoderController::class, 'about']);
+// Route::get('/srccoder/register_recaptcha', [\App\Http\Controllers\SrccoderController::class, 'register']);
+// Route::get('/srccoder/login', [\App\Http\Controllers\SrccoderController::class, 'login']);
+// Route::get('/srccoder/browse', [\App\Http\Controllers\SrccoderController::class, 'browse']);
+
+// login 
+
+
+
+
+// QUESTIONS ROUTES OLD
+// The route we have created to show all question posts
+//Route::get('question', [\App\Http\Controllers\QuestionController::class, 'index']);
+//route to show one post
+// Route::get('/question/{question}', [QuestionController::class, 'show']);
+// // Route::get('/question/create/post', [\App\Http\Controllers\QuestionController::class, 'create']); //shows create post form
+// // Route::post('/question/create/post', [\App\Http\Controllers\QuestionController::class, 'store']); //saves the created post to the databse
+// Route::get('/question/{question}/edit', [QuestionController::class, 'edit']); //shows edit post form
+// Route::put('/question/{question}/edit', [QuestionController::class, 'update']); //commits edited post to the database
+// Route::delete('/question/{question}', [QuestionController::class, 'destroy']); //deletes post from the database
+
+// Answer routes old
+// The route we have created to show all answer posts
+// Route::get('/answer', [AnswerController::class, 'index']);
+// //route to show one post
+// Route::get('/answer/{answer}', [AnswerController::class, 'show']);
+// // Route::get('/answer/create/post', [\App\Http\Controllers\AnswerController::class, 'create']); //shows create post form
+// // Route::post('/answer/create/post', [\App\Http\Controllers\AnswerController::class, 'store']); //saves the created post to the databse
+// Route::get('/answer/{answer}/edit', [AnswerController::class, 'edit']); //shows edit post form
+// Route::put('/answer/{answer}/edit', [AnswerController::class, 'update']); //commits edited post to the database
+// Route::delete('/answer/{answer}', [AnswerController::class, 'destroy']); //deletes post from the database
+
+
+//

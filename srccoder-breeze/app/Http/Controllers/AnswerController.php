@@ -3,22 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
+use App\Models\User;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnswerController extends Controller
 {
-    public function index()
-    {
-//        dd(Answers::all());
-        // fetch and return all blog posts
-        $answers = Answer::all(); //fetch all blog posts from DB
-        //raw json
-        //return $posts; //returns the fetched posts
-        return view('answer.index', [
-            'answers' => $answers,
-        ]); //returns the view with posts
-    }
+//     public function index()
+//     {
+// //        dd(Answers::all());
+//         // fetch and return all blog posts
+//         $answers = Answer::all(); //fetch all blog posts from DB
+//         //raw json
+//         //return $posts; //returns the fetched posts
+//         return view('answer.index', [
+//             'answers' => $answers,
+//         ]); //returns the view with posts
+//     }
+public function index()
+{
+    $answers = Auth::user()->answers()->paginate(10);
+    return view('answers.index', compact('answers'));
+}
 
     /**
      * Show the form for creating a new resource.
@@ -72,14 +79,18 @@ class AnswerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Answer $answer)
+    // public function edit(Answer $answer)
+    // {
+    //     //
+    //     return view('answer.edit', [
+    //         'answer' => $answer
+    //     ]); //returns the edit view with the post
+    // }
+    public function edit($id)
     {
-        //
-        return view('answer.edit', [
-            'answer' => $answer
-        ]); //returns the edit view with the post
+        $answer = Answer::findOrFail($id);
+        return view('answers.edit', compact('answer'));
     }
-
     /**
      * Update the specified resource in storage.
      */

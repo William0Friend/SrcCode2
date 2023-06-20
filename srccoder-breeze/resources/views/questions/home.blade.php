@@ -3,7 +3,7 @@
         {{--  <!--<h1>Hello, world!</h1>-->
         <!--Carosel-->
         <!-- Images (optimized for web sites) -->  --}}
-        <div id="" class="w-1/2 carousel slide" data-bs-ride="carousel">
+        <div id="" class="w-auto carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="/images/pexels-neo-2653362.jpg" class="d-block w-100" alt="...">

@@ -1,23 +1,21 @@
 {{--@extends('layouts.app')--}}
 {{--@section('content')--}}
-@props(['question']);
+@props(['answer']);
 <x-srccoder>
-    <div class="container">
-        <div class="row">
-            <div class="pt-2 col-12">
-                <a href="/questions" class="btn btn-outline-primary btn-sm">Go back</a>
-                <h1 class="display-one">{{ ucfirst($post->title) }}</h1>
-                <p>{!! $post->body !!}</p>
-                <hr>
-                <a href="/question/{{ $post->id }}/edit" class="btn btn-outline-primary">Edit Post</a>
-                <br><br>
-                <form id="delete-frm" class="" action="" method="POST">
-                    @method('DELETE')
-                    @csrf
-                    <button class="btn btn-danger">Delete Post</button>
-                </form>
+    <x-app>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Answer by: {{ $answer->user->name }}</h2>
+                    <p>Email: {{ $answer->user->email }}</p>
+                    <img src="https://www.pravatar.cc/150?u={{ $answer->user->email }}" alt="{{ $answer->user->name }}'s avatar">
+                    <h3>Answer to: {{ $answer->question->title }}</h3>
+                </div>
+                <div class="card-body">
+                    <p>{{ $answer->body }}</p>
+                </div>
             </div>
         </div>
-    </div>
+    </x-app>
 </x-srccoder>
 {{--@endsection--}}

@@ -17,48 +17,48 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('question')" :active="request()->routeIs('question')">
-                        {{ __('question') }}
+                    <x-nav-link :href="route('questions.index')" :active="request()->routeIs('questions.index')">
+                        {{ __('View Questions') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('browse')" :active="request()->routeIs('browse')">
-                        {{ __('browse') }}
+                        {{ __('Question-Browser') }}
                     </x-nav-link>
                 </div>
-
+{{--  
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('srccoder')" :active="request()->routeIs('srccoder')">
                         {{ __('srccoder') }}
                     </x-nav-link>
-                </div>
+                </div>  --}}
                 
-
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('blog-welcome')" :active="request()->routeIs('blog-welcome')">
-                        {{ __('blog-welcome') }}
+                        {{ __('Srcoder-Pedia') }}
                     </x-nav-link>
                 </div>
 
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('posts')" :active="request()->routeIs('posts')">
-                        {{ __('posts') }}
+                        {{ __('Srcoder-News') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                {{--  <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('questions.index')" :active="request()->routeIs('question.index')">
                         {{ __('qHome') }}
                     </x-nav-link>
-                </div>
+                </div>  --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('questions.create')" :active="request()->routeIs('question.create')">
-                        {{ __('qAsk Question') }}
+                        {{ __('Ask Question') }}
                     </x-nav-link>
                 </div>
+                
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('questions.browse')" :active="request()->routeIs('questions.browse')">
-                        {{ __('qBrowse') }}
+                    <x-nav-link :href="route('questions.datatable')" :active="request()->routeIs('questions.datatable')">
+                        {{ __('Browse') }}
                     </x-nav-link>
                 </div>
                 

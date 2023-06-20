@@ -1,5 +1,4 @@
 <x-app>
-    <x-srccoder>
         <!--JumboTron-->
         <div class="p-5 mb-4 bg-light rounded-3">
             <div class="py-5 container-fluid">
@@ -21,5 +20,4 @@
 
             </div>
         </div>
-    </x-srccoder>
 </x-app>

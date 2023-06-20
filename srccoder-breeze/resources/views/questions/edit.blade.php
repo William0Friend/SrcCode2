@@ -1,7 +1,7 @@
 {{--@extends('layouts.app')--}}
 
 {{--@section('content')--}}
-<x-app-guest>
+<x-app>
     <div class="container">
         <form method="POST" action="{{ route('questions.update', $question->slug) }}">
             @csrf
@@ -27,5 +27,5 @@
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
-</x-app-guest>
+</x-app>
 {{--@endsection--}}

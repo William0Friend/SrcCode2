@@ -1,27 +1,20 @@
-{{--@extends('layouts.app')--}}
-{{--@section('content')--}}
-<x-srccoder>
+<x-app>
     <div class="container">
-        <div class="row">
-            <div class="pt-2 col-12">
-                 <div class="row">
-                    <div class="col-8">
-                        <h1 class="display-one">Answer!</h1>
-                        <p>Enjoy reading our questions? Click on a question to answer!</p>
-                    </div>
-                    <div class="col-4">
-                        <p>Create new Answer</p>
-                        <a href="/" class="btn btn-primary btn-sm">Add Answer</a>
-                    </div>
+        <h1>Your Answers</h1>
+        @foreach($answers as $answer)
+            <div class="mb-4 card">
+                <div class="card-header">
+                    Answer to: <a href="{{ route('questions.show', $answer->question->slug) }}">{{ $answer->question->title }}</a>
                 </div>
-                @forelse($posts as $post)
-                    <ul>
-                        <li><a href="./blog/{{ $post->id }}">{{ ucfirst($post->title) }}</a></li>
-                    </ul>
-                @empty
-                    <p class="text-warning">No blog Posts available</p>
-                @endforelse
+                <div class="card-body">
+                    <p>{{ $answer->body }}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ route('answers.show', $answer->id) }}" class="btn btn-primary">View</a>
+                    <a href="{{ route('answers.edit', $answer->id) }}" class="btn btn-warning">Edit</a>
+                </div>
             </div>
-        </div>
+        @endforeach
+        {{ $answers->links() }} <!-- pagination links -->
     </div>
-</x-srccoder>
+</x-app>

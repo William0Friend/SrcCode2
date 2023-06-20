@@ -1,6 +1,6 @@
 {{--@extends('layouts.app')--}}
 {{--@section('content')--}}
-<x-app-guest>
+<x-app>
     <div class="container">
 {{--  search  --}}
         <form action="{{ route('questions.index') }}" method="GET" class="mb-3">
@@ -20,4 +20,4 @@
             </div>
         @endforeach
     </div>
-</x-app-guest>
+</x-app>

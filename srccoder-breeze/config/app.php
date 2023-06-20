@@ -172,6 +172,8 @@ return [
         Spatie\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         // ReCaptcha\ReCaptchaServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
+
 
     ])->toArray(),
 
@@ -192,6 +194,8 @@ return [
         'Form' => Spatie\Html\Elements\Form::class,
         'Debugbar' => Barryvdh\Debugbar\Facade\Debugbar::class,
         'ReCaptcha' => ReCaptcha\ReCaptchaFacade::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+
     ])->toArray(),
 
 ];

@@ -4,6 +4,11 @@ use Illuminate\Support\Str;
 use App\Models\Bounty;
 use App\Models\Question;
 use Illuminate\Http\Request;
+// use Yajra\DataTables\DataTables;
+// use Yajra\DataTables\Facades\DataTables;
+// use Yajra\DataTables\DataTables;
+// use Yajra\DataTables\Facades\DataTables;
+
 
 class QuestionController extends Controller
 {
@@ -136,8 +141,30 @@ class QuestionController extends Controller
         $questions = Question::with('bounty')->paginate(10);
         return view('questions.browse', compact('questions'));
     }
-
-    public function 
+    // public function browse() {
+    //     $questions = Question::select([
+    //             'id',
+    //             'title',
+    //             'slug',
+    //             // add all other necessary fields
+    //         ])->with('bounty');
+    
+    //     return DataTables::of($questions)
+    //         ->addColumn('actions', function ($question) {
+    //             return view('questions.actions', compact('question'))->render();
+    //         })
+    //         ->make(true);
+    // }
+    public function getDataTable()
+    {
+        $query = Question::query()->with('bounty');  // adjust this query as needed
+    
+        return DataTables::of($query)->make(true);
+    }
+    public function home()
+    {
+        return view('questions.home');
+    }
     /**
      * Remove the specified resource from storage.
      */
