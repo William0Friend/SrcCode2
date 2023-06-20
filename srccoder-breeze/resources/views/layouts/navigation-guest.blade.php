@@ -12,17 +12,17 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                    {{--  <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Dashboard-Guest') }}
+                    </x-nav-link>  --}}
+                    {{--  <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
-                    </x-nav-link>
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    </x-nav-link>  --}}
+                    {{--  <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('question')" :active="request()->routeIs('question')">
                             {{ __('question') }}
                         </x-nav-link>
-                    </div>
+                    </div>  --}}
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('browse')" :active="request()->routeIs('browse')">
                             {{ __('browse') }}
@@ -46,6 +46,22 @@
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('posts')" :active="request()->routeIs('posts')">
                             {{ __('posts') }}
+                        </x-nav-link>
+                    </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('questions.index')" :active="request()->routeIs('question.index')">
+                            {{ __('qHome') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('questions.create')" :active="request()->routeIs('question.create')">
+                            {{ __('qAsk Question') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('questions.browse')" :active="request()->routeIs('questions.browse')">
+                            {{ __('qBrowse') }}
                         </x-nav-link>
                     </div>
                 </div>

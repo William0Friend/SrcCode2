@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\ProgrammingLanguage;
+use App\Models\Question;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +20,8 @@ class QuestionProgrammingLanguageFactory extends Factory
     {
         return [
             //
+            'question_id' => Question::factory(),
+            'programming_language_id' => ProgrammingLanguage::factory()
         ];
     }
 }

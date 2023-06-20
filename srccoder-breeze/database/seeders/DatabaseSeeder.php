@@ -58,21 +58,21 @@ class DatabaseSeeder extends Seeder
         );
 
         // //srccoder
-        Question::factory(5)->create();
-        Question::factory(5)->create(
-            [
-                'user_id' => $user->id
-            ]
-        );
+        // Question::factory(5)->create();
+        // Question::factory(5)->create(
+        //     [
+        //         'user_id' => $user->id
+        //     ]
+        // );
         
-        Answer::factory(5)->create();
-        Answer::factory(5)->create(
-             [
-                 'user_id' => $user->id
-             ]
-         );
+        // Answer::factory(5)->create();
+        // Answer::factory(5)->create(
+        //      [
+        //          'user_id' => $user->id
+        //      ]
+        //  );
 
-        Bounty::factory(5)->create();
+        Bounty::factory(30)->create();
         
         //Difficulty::factory(5)->create();
         

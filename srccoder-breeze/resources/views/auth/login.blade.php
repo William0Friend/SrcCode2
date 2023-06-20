@@ -45,6 +45,11 @@
             <x-primary-button class="ml-3">
                 {{ __('Log in') }}
             </x-primary-button>
+            <button type="button" class="ml-3 btn btn-success">
+            <a href="/register" class="p-3">
+                {{ __('Register') }}
+            </a>
+            </button>
         </div>
     </form>
 </x-guest-layout>

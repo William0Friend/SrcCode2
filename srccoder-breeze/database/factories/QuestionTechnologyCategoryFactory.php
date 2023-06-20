@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Question;
+use App\Models\TechnologyCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +20,8 @@ class QuestionTechnologyCategoryFactory extends Factory
     {
         return [
             //
+            'question_id' => Question::factory(),
+            'technology_category_id' => TechnologyCategory::factory()
         ];
     }
 }

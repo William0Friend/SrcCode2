@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('question_programming_languages', function (Blueprint $table) {
             $table->id();
-            $table->foreignKey('question_id');
-            $table->foreignKey('programming_language_id');
+            $table->unsignedBigInteger('question_id');
+            $table->unsignedBigInteger('programming_language_id');
             $table->timestamps();
+
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
+            $table->foreign('programming_language_id')->references('id')->on('programming_languages')->onDelete('cascade');
+
         });
     }
 

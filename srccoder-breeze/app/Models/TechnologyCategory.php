@@ -13,7 +13,8 @@ class TechnologyCategory extends Model
 
     public function questions(): BelongsToMany
     {
-        return $this->belongsToMany(Question::class, 'question_technology_categories', 'technology_category_id', 'question_id');
+        return $this->belongsToMany(Question::class, 
+        'question_technology_categories', 'technology_category_id', 'question_id')->withTimestamps();;
     }
 
 }

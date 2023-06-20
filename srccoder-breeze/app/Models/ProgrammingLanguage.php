@@ -14,7 +14,8 @@ class ProgrammingLanguage extends Model
     protected $guarded = [];
 
     public function questions():BelongsToMany { 
-        return $this->belongsToMany(Question::class, 'question_programming_languages', 'programming_language_id', 'question_id');
+        return $this->belongsToMany(Question::class,
+         'question_programming_languages', 'programming_language_id', 'question_id')->withTimestamps();;
     }
 
 }

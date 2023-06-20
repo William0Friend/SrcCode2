@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
+use App\Models\Question;
 use Illuminate\Http\Request;
 
 class AnswerController extends Controller
@@ -22,35 +23,40 @@ class AnswerController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    // public function create()
+    // {
+    //     //
+    //     // return view('answer.create');
+    // }
+    public function create(Question $question)
     {
-        //
-        return view('answer.create');
+        return view('answers.create', compact('question'));
     }
-
     /**
      * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+*/
+    public function store(Request $request, $slug)
     {
-//        //
-//        $table->id();
-//        $table->foreignId('user_id');
-//        $table->foreignId('question_id');
-//        $table->text('note');
-//        $table->longText('code_body');
-//        $table->string('slug')->unique();//slug is a url friendly version of the title
-//        $table->timestamps();
-        $newAnswer = Answer::create([
-            'note' => $request->note,
-            'code_body' => $request->code_body,
-            'user_id' => $request->user_id,
-            'question_id' => $request->question_id
+        $validatedData = $request->validate([
+            'note' => 'required',
+            'code_body' => 'required',
         ]);
 
-        return redirect('answers/' . $newAnswer->id);
-    }
+        $question = Question::where('slug', $slug)->firstOrFail();
 
+        $answer = new Answer();
+        $answer->note = $validatedData['note'];
+        $answer->code_body = $validatedData['code_body'];
+        $answer->user_id = auth()->user()->id;
+        $answer->question_id = $question->id;
+        
+        // Generate a slug for the answer
+        $answer->slug = 'answer-' . $answer->user_id . '-' . $answer->question_id . '-' . time();
+        
+        $answer->save();
+
+        return redirect()->route('questions.show', [$question->slug]);
+    }
     /**
      * Display the specified resource.
      */
