@@ -1,5 +1,7 @@
 <?php
 namespace App\Http\Controllers;
+use App\Models\Answer;
+use App\Models\User;
 use Illuminate\Support\Str;
 use App\Models\Bounty;
 use App\Models\Question;
@@ -163,7 +165,18 @@ class QuestionController extends Controller
     }
     public function home()
     {
-        return view('questions.home');
+        // return view('questions.home', [
+            $recentQuestions = Question::latest()->take(13)->get();
+            $totalUsers = User::count();
+            $totalQuestions = Question::count();
+            $totalAnswers = Answer::count();
+            return view('questions.home', [
+                'recentQuestions' => $recentQuestions,
+                'totalUsers' => $totalUsers, 
+                'totalQuestions' => $totalQuestions, 
+                'totalAnswers' => $totalAnswers
+            ]);
+        // ]);
     }
     /**
      * Remove the specified resource from storage.

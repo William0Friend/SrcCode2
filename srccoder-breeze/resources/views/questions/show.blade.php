@@ -1,18 +1,5 @@
 @props(['question']);
-<x-app>
-    {{--  <h1 class="text-center">Question Details</h1>
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <h2>{{ $question->title }}</h2>
-                @if($question->bounty)
-                    <p class="text-success">Bounty: {{ $question->bounty->bounty }}</p>
-                @endif
-            </div>
-            <div class="card-body">
-                <p>{{ $question->body }}</p>
-            </div>
-        </div>  --}}
+<x-app-guest>
     
         <h1 class="text-center">Question Details</h1>
     <div class="container">
@@ -46,18 +33,7 @@
                     </div>
                     </article>
                 </div>
-        {{--   Display the answers here   --}}
-        {{--  <div class="mt-4">
-            @foreach($question->answers as $answer)
-                <div class="mb-2 card">
-                    <div class="card-body">
-                        <h4>{{ $answer->note }}</h4> 
-                        <pre><code class="text-white bg-dark">{{ $answer->code_body }}</code></pre>
-                    </div>
-                </div>
-            @endforeach
-        </div>  --}}
-
+       
         <div class="mt-4">
         
             

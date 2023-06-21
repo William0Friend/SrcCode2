@@ -1,7 +1,7 @@
 {{--@extends('layouts.app')--}}
 {{--@section('content')--}}
 @props(['answer']);
-<x-srccoder>
+<x-srccoder-guest>
     <x-app>
         <div class="container">
             <div class="card">
@@ -17,5 +17,5 @@
             </div>
         </div>
     </x-app>
-</x-srccoder>
+</x-srccoder-guest>
 {{--@endsection--}}

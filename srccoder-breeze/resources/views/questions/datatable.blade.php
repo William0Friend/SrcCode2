@@ -1,4 +1,4 @@
-<x-app>
+<x-app-guest>
     <!-- in the head section -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
     
@@ -68,4 +68,4 @@
     </script>  --}}
     @endpush
     
-</x-app>
+</x-app-guest>

@@ -1,7 +1,4 @@
-{{--  @extends('layouts.blog')
-@section('content')  --}}
-{{--  <x-debugbar/>  --}}
-<x-app>
+<x-app-guest>
     <div class="container">
         <div class="row">
             <div class="pt-2 col-12">
@@ -25,5 +22,4 @@
             </div>
         </div>
     </div>
-</x-app>
-{{--  @endsection  --}}
+</x-app-guest>

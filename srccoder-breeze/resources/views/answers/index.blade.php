@@ -1,4 +1,4 @@
-<x-app>
+<x-app-guest>
     <div class="container">
         <h1>Your Answers</h1>
         @foreach($answers as $answer)
@@ -17,4 +17,4 @@
         @endforeach
         {{ $answers->links() }} <!-- pagination links -->
     </div>
-</x-app>
+</x-app-guest>

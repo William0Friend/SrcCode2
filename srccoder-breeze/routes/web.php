@@ -18,12 +18,10 @@ use Illuminate\Support\Facades\File;
 
 
 
-Route::get('/', [QuestionController::class, 'index'])->name('questions.index');
+Route::get('/', [QuestionController::class, 'home'])->name('questions.home');
 // This will automatically create the necessary routes for the resourceful controller actions: index, create, store, show, edit, update, and destroy.
 Route::resource('questions', QuestionController::class);
 Route::resource('answers', AnswerController::class);
-
-Route::get('questions/browse', [QuestionController::class, 'browse'])->name('questions.browse');
 
 Route::get('/questions/create', [QuestionController::class, 'create'])->name('questions.create');
 Route::post('/questions', [QuestionController::class, 'store'])->name('questions.store');
@@ -33,57 +31,31 @@ Route::get('/questions/{slug}/answers/create', [AnswerController::class, 'create
 Route::post('/questions/{slug}/answers', [AnswerController::class, 'store'])->name('answers.store');
 
 Route::get('/questions/datatable', [QuestionController::class, 'getDataTable'])->name('questions.datatable');
+Route::get('questions/browse', [QuestionController::class, 'browse'])->name('questions.browse');
+// Route::get('/browse', [QuestionController::class, 'browse'])->name('browse');
 
-Route::get('/browse', [QuestionController::class, 'browse'])->name('questions.browse');
+
 
 Route::get('/about', [\App\Http\Controllers\SrccoderController::class, 'about'])->name('about');
+
 Route::get('/register_recaptcha', [\App\Http\Controllers\SrccoderController::class, 'register']);
-
-
-
-Route::get('/home', function () {
-    return view('home');
-});
-//DEFAULT BREEZE ROUTES
-Route::get('/welcome', function () {
-    return view('welcome');
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 ;
-Route::get('/question', function () {
-    return view('question.index', [
-                    'questions' => Question::all()
-    ]);
-})->middleware(['auth', 'verified'])->name('question');
-
-
-Route::get('/browse-guest', function () {
-    return view('browse-guest', [
-        'questions' => Question::all(),
-        'users' => User::all()
-    ]);
-})->name('browse-guest');
-
-Route::get('/browse-admin', function () {
-    return view('browse', [
-        'questions' => Question::all()
-    ]);
-})->middleware(['auth', 'verified'])->name('browse');
-
-Route::get('/srccoder', function () {
-    return view('srccoder.index');
-})->middleware(['auth', 'verified'])->name('srccoder');
-
 
 Route::get('/blog-welcome', function () {
     return view('blog.index', [
         'posts' => BlogPost::all()
     ]);
-})->middleware(['auth', 'verified'])->name('blog-welcome');
+})->name('blog-welcome');
+// ->middleware(['auth', 'verified'])->name('blog-welcome');
 
+
+//give me the slug where the post that matches you provided Post::where('slug', $post)->firstOrFail();
+Route::get('/posts/index',[PostController::class, 'index'])->name('posts');
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);//->name('post');
 
 Route::get('/posts/index', function () {
     return view('posts.index', [
@@ -97,12 +69,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
+Route::get('/profile/show', [ProfileController::class, 'show'])->name('profile.show');
 // Route::get('/browse', [\App\Http\Controllers\SrccoderController::class, 'browse']);
-
-//give me the slug where the post that matches you provided Post::where('slug', $post)->firstOrFail();
-Route::get('/posts',[PostController::class, 'index'])->name('home');
-Route::get('/posts/{post:slug}', [PostController::class, 'show']);//->name('post');
 
 //BLOG ROUTES
 // The route we have created to show all blog posts
@@ -227,6 +195,15 @@ require __DIR__.'/auth.php';
 
 
 
+// Route::get('/home', function () {
+//     return view('home');
+// });
+// //DEFAULT BREEZE ROUTES
+// Route::get('/welcome', function () {
+//     return view('welcome');
+// });
+
+
 // QUESTIONS ROUTES OLD
 // The route we have created to show all question posts
 //Route::get('question', [\App\Http\Controllers\QuestionController::class, 'index']);
@@ -251,3 +228,20 @@ require __DIR__.'/auth.php';
 
 
 //
+
+// Route::get('/browse-guest', function () {
+//     return view('browse-guest', [
+//         'questions' => Question::all(),
+//         'users' => User::all()
+//     ]);
+// })->name('browse-guest');
+
+// Route::get('/browse-admin', function () {
+//     return view('browse', [
+//         'questions' => Question::all()
+//     ]);
+// })->middleware(['auth', 'verified'])->name('browse');
+
+// Route::get('/srccoder', function () {
+//     return view('srccoder.index');
+// })->middleware(['auth', 'verified'])->name('srccoder');

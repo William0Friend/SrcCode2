@@ -21,11 +21,11 @@
                         {{ __('View Questions') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                {{--  <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('browse')" :active="request()->routeIs('browse')">
                         {{ __('Question-Browser') }}
                     </x-nav-link>
-                </div>
+                </div>  --}}
 {{--  
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('srccoder')" :active="request()->routeIs('srccoder')">

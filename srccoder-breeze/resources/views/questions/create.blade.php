@@ -1,5 +1,5 @@
 
-<x-app>
+<x-app-guest>
     <div class="flex items-stretch justify-center w-auto h-auto my-10">
         <form action="{{ route('questions.store') }}" method="POST">
             @csrf
@@ -24,5 +24,5 @@
             <input type="submit" value="Ask Question" class="btn-dark">
         </form>
     </div>
-</x-app>
+</x-app-guest>
 
