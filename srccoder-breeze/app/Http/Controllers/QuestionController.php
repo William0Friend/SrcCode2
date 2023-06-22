@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use App\Models\Bounty;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 // use Yajra\DataTables\DataTables;
 // use Yajra\DataTables\Facades\DataTables;
 // use Yajra\DataTables\DataTables;
@@ -137,12 +138,56 @@ class QuestionController extends Controller
 
         return redirect('question/' . $question->id);
     }
+    public function browse(Request $request)
+{
+    $query = Question::with('user', 'bounty');
+    return DataTables::of($query)->make(true);
+}
+    // public function browse()
+    // {
+    //      $query = Question::with('user', 'bounty');
+    //      return DataTables::of($query)->make(true);
 
-    public function browse()
-    {
-        $questions = Question::with('bounty')->paginate(10);
-        return view('questions.browse', compact('questions'));
-    }
+    //     // return view('questions.browse', ['questions' => $questions]);
+    // // }
+    // public function browse(Request $request)
+    // {
+    //     $query = Question::with('user', 'bounty');
+    //     $data = DataTables::of($query)->make(true);
+    
+    //     return response()->json($data);
+    // }
+    // public function browse(Request $request)
+    // {
+    //     return DataTables::of(Question::with('user', 'bounty'))
+    //         ->addColumn('user.name', function (Question $question) {
+    //             return $question->user ? $question->user->name : 'Unknown';
+    //         })
+    //         ->addColumn('bounty.bounty', function (Question $question) {
+    //             return $question->bounty ? $question->bounty->bounty : 'None';
+    //         })
+    //         ->make(true);
+    // }
+    public function browseData(Request $request)
+{
+    $questions = Question::with(['bounty', 'user'])->select(['id', 'title', 'slug'])->orderByDesc('created_at');
+
+    return DataTables::of($questions)
+        ->addColumn('user.name', function (Question $question) {
+            return $question->user ? $question->user->name : 'Unknown';
+        })
+        ->addColumn('bounty.bounty', function (Question $question) {
+            return $question->bounty ? $question->bounty->bounty : 'None';
+        })
+        ->make(true);
+}
+    
+    // public function browse()
+    // {
+    //     // $questions = Question::with('bounty')->paginate(10);
+    //     $questions = Question::all();
+    //     return view('questions.browse', ['questions' => $questions]);
+    // }
     // public function browse() {
     //     $questions = Question::select([
     //             'id',
@@ -157,12 +202,12 @@ class QuestionController extends Controller
     //         })
     //         ->make(true);
     // }
-    public function getDataTable()
-    {
-        $query = Question::query()->with('bounty');  // adjust this query as needed
+    // public function getDataTable()
+    // {
+    //     $query = Question::query()->with('bounty');  // adjust this query as needed
     
-        return DataTables::of($query)->make(true);
-    }
+    //     return DataTables::of($query)->make(true);
+    // }
     public function home()
     {
         // return view('questions.home', [

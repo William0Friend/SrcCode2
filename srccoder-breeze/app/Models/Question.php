@@ -44,7 +44,7 @@ class Question extends Model
     {
         return $this->hasOne(Bounty::class, 'question_id', 'id');
     }
-    // public function questionNotes(): HasOne
+    // // public function questionNotes(): HasOne
     // {
     //     return $this->hasOne(QuestionNotes::class);
     // }
@@ -53,5 +53,13 @@ class Question extends Model
         return $this->morphMany(Image::class, 'imageable');
     }
 
+//     public function user()
+// {
+//     return $this->belongsTo(User::class);
+// }
 
+// public function bounty()
+// {
+//     return $this->belongsTo(Bounty::class);
+// }
 }

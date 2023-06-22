@@ -72,15 +72,15 @@ class DatabaseSeeder extends Seeder
         //      ]
         //  );
 
-        Bounty::factory(30)->create();
+        Bounty::factory(100)->create();
         
         //Difficulty::factory(5)->create();
         
         // ProgrammingLanguage::factory(5)->create();
 
         // TechnologyCategory::factory(5)->create();
-        QuestionProgrammingLanguage::factory(5)->create();
-        QuestionTechnologyCategory::factory(5)->create();
+        // QuestionProgrammingLanguage::factory(5)->create();
+        // QuestionTechnologyCategory::factory(5)->create();
         // Sales::factory(5)->create();
         // Sales::factory(5)->create(
         //     [

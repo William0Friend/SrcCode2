@@ -11,16 +11,21 @@
                 </div>
 @guest
                 {{--  <!-- Navigation Links -->  --}}
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('questions.home')" :active="request()->routeIs('questions.home')">
+                            {{ __('Home') }}
+                        </x-nav-link>
+                    </div>
                
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('blog-welcome')" :active="request()->routeIs('blog-welcome')">
-                            {{ __('Srcoder-Pedia') }}
+                            {{ __('Srccoder-Pedia') }}
                         </x-nav-link>
                     </div>
 
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('posts')" :active="request()->routeIs('posts')">
-                            {{ __('Srcoder-News') }}
+                        <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
+                            {{ __('Srccoder-News') }}
                         </x-nav-link>
                     </div>
 
@@ -31,10 +36,20 @@
                         </x-nav-link>
                     </div>
                     
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                            {{ __('About') }}
+                        </x-nav-link>
+                    </div>
 @endguest
                 
 @auth
                 {{--  <!-- Navigation Links -->  --}}
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('questions.home')" :active="request()->routeIs('questions.home')">
+                            {{ __('Home') }}
+                        </x-nav-link>
+                    </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
@@ -54,7 +69,7 @@
 
 
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('posts')" :active="request()->routeIs('posts')">
+                        <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                             {{ __('Srcoder-News') }}
                         </x-nav-link>
                     </div>
@@ -74,6 +89,11 @@
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('profile.show')" :active="request()->routeIs('profile.show')">
                             {{ __('Profile') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                            {{ __('About') }}
                         </x-nav-link>
                     </div>
                     
@@ -99,18 +119,10 @@
                             <x-dropdown-link :href="route('register')">
                                 {{ __('Register') }}
                             </x-dropdown-link>
-
-                            <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-
-                                <x-dropdown-link :href="route('login')"
-                                        onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
-                                    {{ __('Login') }}
-                                </x-dropdown-link>
-                                
-                            </form>
+                            <x-dropdown-link :href="route('login')">
+                                {{ __('Login') }}
+                            </x-dropdown-link>
+                           
                         </x-slot>
                     </x-dropdown>
                 </div>
@@ -135,7 +147,7 @@
                 </x-slot>
 
                 <x-slot name="content">
-                    <x-dropdown-link :href="route('profile.edit')">
+                    <x-dropdown-link :href="route('profile.show')">
                         {{ __('Profile') }}
                     </x-dropdown-link>
 
@@ -191,7 +203,7 @@
                     </x-responsive-nav-link>
                 </div>
 
-                <!-- Responsive Settings Options -->
+                {{--  <!-- Responsive Settings Options -->  --}}
                 <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
                     <div class="px-4">
                         <div class="text-base font-medium text-gray-800 dark:text-gray-200">Guest</div>
@@ -199,20 +211,16 @@
                     </div>
 
                     <div class="mt-3 space-y-1">
-                        <x-responsive-nav-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                        <x-responsive-nav-link :href="route('questions.browse')">
+                            {{ __('Browse') }}
                         </x-responsive-nav-link>
 
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
+                        <x-responsive-nav-link :href="route('login')">
+                            {{ __('Login') }}
+                        </x-responsive-nav-link>
 
-                            <x-responsive-nav-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-responsive-nav-link>
-                        </form>
+                        <x-responsive-nav-link :href="route('register')">
+                            {{ __('Register') }}
                     </div>
                 </div>
             </div>
@@ -226,8 +234,38 @@
                         {{ __('Dashboard') }}
                     </x-responsive-nav-link>
                 </div>
-
-                <!-- Responsive Settings Options -->
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('questions.index')" :active="request()->routeIs('questions.index')">
+                        {{ __('View Questions') }}
+                    </x-responsive-nav-link>
+                </div>
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('blog-welcome')" :active="request()->routeIs('blog-welcome')">
+                        {{ __('Srccoder-Pedia') }}
+                    </x-responsive-nav-link>
+                </div>
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
+                        {{ __('Srccoder-News') }}
+                    </x-responsive-nav-link>
+                </div>
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('questions.create')" :active="request()->routeIs('questions.create')">
+                        {{ __('Ask Question') }}
+                    </x-responsive-nav-link>
+                </div>
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('questions.browse')" :active="request()->routeIs('questions.browse')">
+                        {{ __('Browse') }}
+                    </x-responsive-nav-link>
+                </div>
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('profile.show')" :active="request()->routeIs('profile.show')">
+                        {{ __('Profile') }}
+                    </x-responsive-nav-link>
+                </div>
+              
+                {{--  <!-- Responsive Settings Options -->  --}}
                 <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
                     <div class="px-4">
                         <div class="text-base font-medium text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
@@ -235,11 +273,11 @@
                     </div>
 
                     <div class="mt-3 space-y-1">
-                        <x-responsive-nav-link :href="route('profile.edit')">
+                        <x-responsive-nav-link :href="route('profile.show')">
                             {{ __('Profile') }}
                         </x-responsive-nav-link>
 
-                        <!-- Authentication -->
+                        {{--  <!-- Authentication -->  --}}
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
@@ -253,4 +291,5 @@
                 </div>
             </div>
 @endauth
+@endif
 </nav>

@@ -19,8 +19,8 @@ class BlogPostFactory extends Factory
     {
         return [
             //
-            'title' => $this->faker->title(), //generates fake 5 words
-            'body' => $this->faker->unique()->paragraph(), //generates fake 30 paragraphs
+            'title' => $this->faker->unique()->sentence(), //generates fake 5 words
+            'body' => $this->faker->unique()->paragraph(3), //generates fake 30 paragraphs
             'user_id' => User::factory() //Generates a User from factory and extracts id
             
         ];

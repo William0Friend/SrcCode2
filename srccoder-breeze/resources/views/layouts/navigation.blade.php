@@ -57,7 +57,7 @@
                 </div>
                 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('questions.datatable')" :active="request()->routeIs('questions.datatable')">
+                    <x-nav-link :href="route('questions.browse')" :active="request()->routeIs('questions.browse')">
                         {{ __('Browse') }}
                     </x-nav-link>
                 </div>
