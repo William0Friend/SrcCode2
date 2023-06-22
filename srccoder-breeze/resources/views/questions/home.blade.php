@@ -97,9 +97,9 @@
             </div>
         </div>
     </section>
-    
+    {{--  //TODO: categories and programming languge choices  --}}
     {{--  <!-- Categories / Tags -->  --}}
-    <section class="py-12 bg-light">
+    {{--  <section class="py-12 bg-light">
         <div class="container mx-auto">
             <h2 class="mb-6">Categories / Tags</h2>
             <div class="grid grid-cols-3 gap-4">
@@ -113,7 +113,7 @@
                 <!-- End of loop -->
             </div>
         </div>
-    </section>
+    </section>  --}}
     {{--  <!-- Statistics -->  --}}
     <section class="py-12">
         <div class="container mx-auto">

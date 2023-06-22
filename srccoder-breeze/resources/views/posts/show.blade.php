@@ -6,14 +6,14 @@
             <main class="max-w-6xl mx-auto mt-10 space-y-6 lg:mt-20">
                 <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
                     <div class="col-span-4 mb-10 lg:text-center lg:pt-14">
-                        <img src="/images/illustration-1.png" alt="" class="rounded-xl">
+                        <img src="/images/Source-code-icon.svg" alt="" class="rounded-xl">
 
                         <p class="block mt-4 text-xs text-gray-400">
                             Published <time>{{$post->created_at->diffForHumans()}}</time>
                         </p>
 
                         <div class="flex items-center mt-4 text-sm lg:justify-center">
-                            <img src="/images/lary-avatar.svg" alt="Lary avatar">
+                            <img src="https://i.pravatar.cc/100?u={{$post->id}}">
                             <div class="ml-3 text-left">
                                 <h5 class="font-bold">
 
@@ -62,7 +62,7 @@
                 <section>
                     <article class="flex">
                         <div>
-                            <img src="https://i.pravatar.cc/100?u={{$post->author->id}}" alt="" class="rounded-full">
+                            <img src="https://i.pravatar.cc/100?u={{$post->author->id+1}}" alt="" class="rounded-full">
                         </div>
                     <div>
                         <header>

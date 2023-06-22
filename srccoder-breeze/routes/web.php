@@ -17,7 +17,7 @@ use Symfony\Component\Yaml\Yaml;
 use Illuminate\Support\Facades\File;
 
 
-
+//Questions
 Route::get('/', [QuestionController::class, 'home'])->name('questions.home');
 // This will automatically create the necessary routes for the resourceful controller actions: index, create, store, show, edit, update, and destroy.
 Route::resource('questions', QuestionController::class);
@@ -26,28 +26,14 @@ Route::get('/questions', [QuestionController::class, 'index'])->name('questions.
 Route::get('/questions/create', [QuestionController::class, 'create'])->name('questions.create');
 Route::get('/questions/{slug}', [QuestionController::class, 'show'])->name('questions.show');
 Route::post('/questions', [QuestionController::class, 'store'])->name('questions.store');
-// Route::get('/browse', [QuestionController::class, 'browse'])->name('questions.browse');
+Route::get('/questions/{slug}/answers/create', [AnswerController::class, 'create'])->name('answers.create');
+Route::post('/questions/{slug}/answers', [AnswerController::class, 'store'])->name('answers.store');
 Route::get('/browse', function () {
     return view('questions.browse');
 })->name('questions.browse');
 
 Route::get('/browse/data', [QuestionController::class, 'browse'])->name('questions.browse.data');
-
-
-// Route::get('/browse', [QuestionController::class, 'browse'])->name('questions.browse');
-// Route::get('/browse/data', [QuestionController::class, 'browseData'])->name('questions.browse.data');
-
-Route::get('/questions/{slug}/answers/create', [AnswerController::class, 'create'])->name('answers.create');
-Route::post('/questions/{slug}/answers', [AnswerController::class, 'store'])->name('answers.store');
-
-// Route::get('/questions/datatable', [QuestionController::class, 'getDataTable'])->name('questions.datatable');
-
-// Route::get('/browse', [QuestionController::class, 'browse'])->name('browse');
-
-
-
 Route::get('/about', [\App\Http\Controllers\SrccoderController::class, 'about'])->name('about');
-
 //Route::get('/register_recaptcha', [\App\Http\Controllers\SrccoderController::class, 'register']);
 
 Route::get('/dashboard', function () {
@@ -83,8 +69,6 @@ Route::get('/profile/show', [ProfileController::class, 'show'])->name('profile.s
 // Route::get('/browse', [\App\Http\Controllers\SrccoderController::class, 'browse']);
 
 //BLOG ROUTES
-// The route we have created to show all blog posts
-// Route::get('/blog/welcome', [\App\Http\Controllers\BlogPostController::class, 'welcome']);
 Route::get('/blog', [\App\Http\Controllers\BlogPostController::class, 'index']);
 //route to show one post
 Route::get('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'show']);
@@ -96,139 +80,8 @@ Route::delete('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::cla
 
 require __DIR__.'/auth.php';
 
-
-// // FormController ROUTES
-// Route::get('user/create', [ FormController::class, 'create' ]);
-// Route::post('user/create', [ FormController::class, 'store' ]);
-
-// // Form Example route
-// Route::get('/form',function() {
-//     return view('form');
-// });
-
-//Route::post('logout', [LogOutController::class, 'store'])->middleware('auth');
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-//video
-//clockwork extention gets you around this
-// Route::get('/', function () {
-//     Illuminate\Support\Facades\DB::listen(function($query){
-//         logger($query->sql, $query->bindings);
-//         //custom query here...
-//         return view('posts', [
-//             'posts' => Post::all()
-//         ]);
-
-//     });
-// });
-//wildcard must match parameter/variable name
-//if var mtches wildcard you want corrisponding post id
-//to keep slug in uri instead of id, you must use getRouteKeyName() in Post.php and have it return slug
-//this is older and used to be the only way to do it
-// Route::get('posts/{post}', function (Post $post) {
-//          return view('post', [
-//              'post' => $post
-//      ]);
-//  });
-//because of Late Model Binding above function and below function are equivalent
-//  Route::get('posts/{post}', function ($id) {
-//             return view('post', [
-//                 'post' => Post::findOrFail($id)
-//         ]);
-//     });
-//Route model Binding aka Binding Post $post parameter to findOrFail($post)
-// Route::get('authors/{author:username}', function (User $author) {
-//        //change from 24 to 4 sql queris with eager loading ->load(['category','author'])
-//     return view('posts.index', [
-//         //'posts' => $author->posts->load(['category','author'])
-
-//         //eager load as part of a new query to solve n+1 problem is in Post.php
-//         'posts' => $author->posts,
-//         'categories' => Category::all()
-//     ]);
-// });
-
-//replaced in controller
-// Route::get('categories/{category:slug}', function (Category $category) {
-//     return view('posts', [
-//         //change from 24 to 4 sql queris with eager loading ->load(['category','author'])
-//         //'posts' => $category->posts->load(['category','author'])
-//         //eager load as part of a new query to solve n+1 problem is in Post.php
-//         'posts' => $category->posts,
-//         'currentCategory' => $category,
-//         'categories' => Category::all()
-//     ]);
-// })->name('category');
-
-
-//blog-tut
-//Route::get('/blog', function () {
-//    return view('blog');
-//});
-//
-
-//end mine
-
-//video
-
-//my login system
-// works with / route from video
-//middleware runs with and inspects the request before it reaches the controller
-// Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
-// Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
-// Route::get('/login', [SessionsController::class, 'create'])->middleware('guest');
-// Route::post('/login', [SessionsController::class, 'store'])->middleware('guest');
-// Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth');
-// Route::get('/',[PostController::class, 'index'])->name('home');
-
-
-
-
-
-// SRCCODER ROUTES
-// Route::get('/srccoder', [\App\Http\Controllers\SrccoderController::class, 'index']);
-// Route::get('/srccoder/about', [\App\Http\Controllers\SrccoderController::class, 'about']);
-// Route::get('/srccoder/register_recaptcha', [\App\Http\Controllers\SrccoderController::class, 'register']);
-// Route::get('/srccoder/login', [\App\Http\Controllers\SrccoderController::class, 'login']);
-// Route::get('/srccoder/browse', [\App\Http\Controllers\SrccoderController::class, 'browse']);
-
-// login 
-
-
-
-
-// Route::get('/home', function () {
-//     return view('home');
-// });
-// //DEFAULT BREEZE ROUTES
-// Route::get('/welcome', function () {
-//     return view('welcome');
-// });
-
-//
-
-// Route::get('/browse-guest', function () {
-//     return view('browse-guest', [
-//         'questions' => Question::all(),
-//         'users' => User::all()
-//     ]);
-// })->name('browse-guest');
-
-// Route::get('/browse-admin', function () {
-//     return view('browse', [
-//         'questions' => Question::all()
-//     ]);
-// })->middleware(['auth', 'verified'])->name('browse');
-
-// Route::get('/srccoder', function () {
-//     return view('srccoder.index');
-// })->middleware(['auth', 'verified'])->name('srccoder');
+// The route we have created to show all blog posts
+// Route::get('/blog/welcome', [\App\Http\Controllers\BlogPostController::class, 'welcome']);
+// Route::get('/browse', [QuestionController::class, 'browse'])->name('questions.browse');
+// Route::get('/browse/data', [QuestionController::class, 'browseData'])->name('questions.browse.data');
+// Route::get('/questions/datatable', [QuestionController::class, 'getDataTable'])->name('questions.datatable');

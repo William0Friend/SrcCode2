@@ -54,7 +54,7 @@ class AuthenticatedSessionController extends Controller
         $request->validate([
             $this->username() => 'required|string',
             'password' => 'required|string',
-            'g-recaptcha-response' => ['required', new ReCaptcha(config('services.recaptcha.secret_key'))],
+            // 'g-recaptcha-response' => ['required', new ReCaptcha(config('services.recaptcha.secret_key'))],
         ]);
     }
 

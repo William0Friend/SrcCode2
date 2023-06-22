@@ -4,8 +4,13 @@
 {{ $attributes->merge(['class' => 'transition-colors duration-300 border border-black border-opacity-0 hover:bg-gray-100 hover:border-opacity-5 rounded-xl']) }}>
 <div class="px-5 py-6 lg:column">
     {{-- TODO: --}}
+    <div>
+        {{--  <img src="https://i.pravatar.cc/100?u={{$post->author->id}}" alt="" class="rounded-full">
+    </div>  --}}
     <div class="flex-1 lg:mr-8">
-        <img src="/images/illustration-1.png" alt="Blog Post illustration" class="rounded-xl">
+        {{--  <img src="/images/illustration-1.png" alt="Blog Post illustration" class="rounded-xl">  --}}
+        <img src="https://i.pravatar.cc/100?u={{$post->id}}" alt="" class="rounded-full">
+
     </div>
 
     <div class="flex flex-col justify-between flex-1">
@@ -38,7 +43,7 @@
 
         <footer class="flex items-center justify-between mt-8">
             <div class="flex items-center text-sm">
-                <img src="/images/lary-avatar.svg" alt="Lary avatar">
+                <img src="https://i.pravatar.cc/100?u={{$post->id}}" alt="" class="rounded-full">
                 <div class="ml-3">
                     <h5 class="font-bold">
                         <a href="/?author={{$post->author->username}}">{{$post->author->name}}</a>

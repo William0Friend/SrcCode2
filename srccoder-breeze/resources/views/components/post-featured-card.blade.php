@@ -5,9 +5,9 @@ class="transition-colors duration-300 border border-black border-opacity-0 hover
 
 <div class="px-5 py-6 lg:flex">
     {{-- TODO: --}}
-    <div class="flex-1 lg:mr-8">
-        <img src="/images/illustration-1.png" alt="Blog Post illustration" class="rounded-xl">
-    </div>
+    <diV>
+        <img src="https://i.pravatar.cc/100?u={{$post->author->id}}" alt="" class="rounded-xl">
+    </diV>
 
     <div class="flex flex-col justify-between flex-1">
         <header class="mt-8 lg:mt-0">

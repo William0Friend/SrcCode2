@@ -11,10 +11,16 @@
                         <p>Enjoy reading our wiki's. Click on a post to read! Familiar with Srccder, add your own wiki.</p>
                     </div>
                     <div class="col-4">
+                        @if(Auth::User())
                         <p>Create new wiki</p>
                         <a href="/blog/create/post" class="btn btn-primary btn-sm">Add Wiki</a>
-                    </div>
-                </div>                
+                        @else
+                        <p>Must be logged in to edit wikis!</p>
+                        <a href="/login" class="btn btn-primary btn-sm">Login to add Wiki</a>
+                        <p>Not a member?</p>    
+                        <a href="/register" class="btn btn-primary btn-sm">Register</a>
+                @endif
+                        </div>                
                 @forelse($posts as $post)
                     <ul>
                         <li><a href="./blog/{{ $post->id }}">{{ ucfirst($post->title) }}</a></li>
