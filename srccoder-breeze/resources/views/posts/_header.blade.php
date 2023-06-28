@@ -1,12 +1,12 @@
 <header class="max-w-xl mx-auto mt-20 text-center"> 
-    <h1 class="text-4xl">
+    <h1 class="text-4xl text-red-700">
         Latest <span class="text-blue-500"> {{ config('app.name')}} </span> News
     </h1>
 
     <div class="mt-4 space-y-2 lg:space-y-0 lg:space-x-4">
 
         <!--  Category -->
-        <div class="relative text-left bg-gray-100 lg:inline-flex rounded-xl">
+        <div class="relative text-left bg-gray-300 lg:inline-flex rounded-xl">
             <x-my-category-dropdown />
         {{-- </div> --}}
 

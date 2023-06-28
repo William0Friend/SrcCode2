@@ -1,7 +1,7 @@
 @props(['post'])
 
 <article
-{{ $attributes->merge(['class' => 'transition-colors duration-300 border border-black border-opacity-0 hover:bg-gray-100 hover:border-opacity-5 rounded-xl']) }}>
+{{ $attributes->merge(['class' => 'transition-colors duration-300 border border-black border-opacity-0 hover:bg-gray-100 hover:border-opacity-5 rounded-xl  hover:text-black hover:bg-red-500']) }}>
 <div class="px-5 py-6 lg:column">
     {{-- TODO: --}}
     <div>

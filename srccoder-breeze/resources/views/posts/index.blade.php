@@ -30,7 +30,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
-    <main class="max-w-6xl mx-auto mt-6 space-y-6 lg:mt-20">
+    <main class="max-w-6xl mx-auto mt-6 space-y-6 text-red-700 lg:mt-20 ">
         {{-- grab from post collection --}}
         {{-- moved if and loop to posts-grid.blade.php to condence this --}}
         @if ($posts->count())
@@ -42,4 +42,4 @@
         @endif
     
     </main>
-</x-app-g>
+</x-app-guest>

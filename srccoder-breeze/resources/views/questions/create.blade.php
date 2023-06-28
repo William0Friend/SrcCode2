@@ -27,7 +27,7 @@
 </x-app-guest>
   --}}
   <x-app-guest>
-    <div class="container px-4 mx-auto mt-5">
+    <div class="container px-4 mx-auto mt-5 mb-20">
         <div class="flex flex-col gap-4 md:grid md:grid-cols-3">
             <div class="hidden mt-10 md:block md:col-span-1">
                 <!-- SVG Image -->
@@ -64,4 +64,5 @@
             </div>
         </div>
     </div>
+
 </x-app-guest>

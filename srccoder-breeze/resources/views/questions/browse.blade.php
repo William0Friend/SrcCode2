@@ -1,7 +1,16 @@
 <x-app-guest>
-    <div class="container px-4 py-12 mx-auto sm:px-6 lg:px-8">
+{{--  
+    <style>
+        main {
+            background-image: url('images/Src/2.jpg');
+            background-repeat: repeat;
+            background-size: 100%;
+        }
+    </style>  --}}
+
+    <div class="container px-4 py-12 mx-auto md:px-0 sm:px-6 lg:px-8">
         <h1 class="text-3xl font-extrabold leading-9 text-center">Browse Questions</h1>
-        <table id="questions-table" class="w-full mt-4 display">
+        <table id="questions-table" class="w-full mt-4 display sm:m-0">
             <thead>
                 <tr>
                     <th>Title</th>
@@ -68,8 +77,8 @@
                         var answerUrl = viewUrl + "#answer-form";
     
                         // Next, I'm generating the HTML for the 'Question' and 'Answer' buttons with their respective URLs.
-                        var buttons = '<a href="' + viewUrl + '" class="inline-flex items-center px-4 py-2 text-xs font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Question</a> ';
-                        buttons += '<a href="' + answerUrl + '" class="inline-flex items-center px-4 py-2 ml-4 text-xs font-medium text-white bg-green-600 border border-transparent rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Answer</a>';
+                        var buttons = '<a href="' + viewUrl + '" class="inline-flex items-center px-4 py-2 text-xs font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:m-2">Show Question</a> ';
+                        //buttons += '<a href="' + answerUrl + '" class="inline-flex items-center px-4 py-2 ml-4 text-xs font-medium text-white bg-green-600 border border-transparent rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Answer</a>';
     
                         // I'm then returning these buttons as the final content of this column.
                         return buttons;

@@ -165,14 +165,16 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        // App\Providers\TelescopeServiceProvider::class,
-        Spatie\Html\HtmlServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
+        // Spatie\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        // Snowfire\Mail\PostmarkServiceProvider,
+
         // ReCaptcha\ReCaptchaServiceProvider::class,
-        Yajra\DataTables\DataTablesServiceProvider::class,
+        // Yajra\DataTables\DataTablesServiceProvider::class,
 
 
     ])->toArray(),
@@ -190,11 +192,11 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
-        'Html' => Spatie\Html\Facades\Html::class,
-        'Form' => Spatie\Html\Elements\Form::class,
+        // 'Html' => Spatie\Html\Facades\Html::class,
+        // 'Form' => Spatie\Html\Elements\Form::class,
         'Debugbar' => Barryvdh\Debugbar\Facade\Debugbar::class,
-        'ReCaptcha' => ReCaptcha\ReCaptchaFacade::class,
-        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        // 'ReCaptcha' => ReCaptcha\ReCaptchaFacade::class,
+        // 'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
     ])->toArray(),
 

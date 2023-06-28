@@ -9,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use ReCaptcha\ReCaptcha;
+// use ReCaptcha\ReCaptcha;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -26,6 +26,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        // dd($request);
         $request->authenticate();
 
         $request->session()->regenerate();
@@ -49,13 +50,13 @@ class AuthenticatedSessionController extends Controller
    /**
      * ReCaptcha validation
      */
-    protected function validateLogin(Request $request)
-    {
-        $request->validate([
-            $this->username() => 'required|string',
-            'password' => 'required|string',
-            // 'g-recaptcha-response' => ['required', new ReCaptcha(config('services.recaptcha.secret_key'))],
-        ]);
-    }
+    // protected function validateLogin(Request $request)
+    // {
+    //     $request->validate([
+    //         $this->username() => 'required|string',
+    //         'password' => 'required|string',
+    //         // 'g-recaptcha-response' => ['required', new ReCaptcha(config('services.recaptcha.secret_key'))],
+    //     ]);
+    // }
 
 }

@@ -1,5 +1,5 @@
 <x-app-guest>
-    <div class="container px-4 mx-auto mt-5">
+    <div class="container px-4 mx-auto mt-5 mb-20">
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
             <!-- Profile Info -->
             <div class="p-6 bg-white rounded-lg shadow">
@@ -14,13 +14,13 @@
                 <div class="mb-4 text-right">
                     <a href="{{ route('profile.edit', $user->id) }}" class="px-4 py-2 font-bold text-white bg-blue-500 rounded btn btn-primary hover:bg-blue-700">Edit Profile</a>
                 </div>
-                <div>
+                <div class="mb-5 ml-10">
                     {{--  <!-- Display the user's avatar image -->  --}}
                     {{--  @if($user->image)
                         <img src="{{ $user->image->url }}" class="w-48 h-48 rounded-full">
                     @else  --}}
                         {{--  <!-- Display a default avatar image -->  --}}
-                        <img src="https://via.placeholder.com/200" class="w-48 h-48 rounded-full">
+                        <img src="https://i.pravatar.cc/100?u={{$user->id}}" class="w-48 h-48 border border-black rounded-xl">
                     {{--  @endif  --}}
                 </div>
             </div>
@@ -51,6 +51,7 @@
             </div>
         </div>
     </div>
+
 </x-app-guest>
 
 

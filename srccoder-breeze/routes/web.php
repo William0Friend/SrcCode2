@@ -33,6 +33,7 @@ Route::get('/browse', function () {
 })->name('questions.browse');
 
 Route::get('/browse/data', [QuestionController::class, 'browse'])->name('questions.browse.data');
+
 Route::get('/about', [\App\Http\Controllers\SrccoderController::class, 'about'])->name('about');
 //Route::get('/register_recaptcha', [\App\Http\Controllers\SrccoderController::class, 'register']);
 
@@ -47,7 +48,6 @@ Route::get('/blog-welcome', function () {
     ]);
 })->name('blog-welcome');
 // ->middleware(['auth', 'verified'])->name('blog-welcome');
-
 
 //give me the slug where the post that matches you provided Post::where('slug', $post)->firstOrFail();
 Route::get('/posts/index',[PostController::class, 'index'])->name('posts.index');
@@ -79,7 +79,7 @@ Route::put('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::c
 Route::delete('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'destroy']); //deletes post from the database
 
 require __DIR__.'/auth.php';
-
+// require __DIR__.'/old.php';
 // The route we have created to show all blog posts
 // Route::get('/blog/welcome', [\App\Http\Controllers\BlogPostController::class, 'welcome']);
 // Route::get('/browse', [QuestionController::class, 'browse'])->name('questions.browse');

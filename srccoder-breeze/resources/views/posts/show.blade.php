@@ -1,5 +1,6 @@
 
 {{-- components directory layout.blade.php way --}}
+
 <x-layout>
         <section class="px-6 py-8">
 

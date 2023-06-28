@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:cc="http://web.resource.org/cc/"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    id="svg1"
+    sodipodi:docname="jail_pay.svg"
+    viewBox="0 0 60 60"
+    sodipodi:version="0.32"
+    version="1.0"
+    y="0"
+    x="0"
+    inkscape:version="0.38.1"
+    sodipodi:docbase="/home/danny/flat/scalable/actions"
+  >
+  <sodipodi:namedview
+      id="base"
+      bordercolor="#666666"
+      inkscape:pageshadow="2"
+      inkscape:window-width="1016"
+      pagecolor="#ffffff"
+      inkscape:zoom="6.9465337"
+      inkscape:window-x="0"
+      borderopacity="1.0"
+      inkscape:cx="40.436096"
+      inkscape:cy="24.205499"
+      inkscape:window-y="0"
+      inkscape:window-height="685"
+      inkscape:pageopacity="0.0"
+  />
+  <path
+      id="path841"
+      sodipodi:nodetypes="cccc"
+      style="stroke-linejoin:round;stroke:#7f7f7f;stroke-linecap:round;stroke-width:5;fill:none"
+      d="m3.7789 8.8954h52.184m-52.364 43.187h51.824"
+      transform="translate(.17995 -.35989)"
+  />
+  <path
+      id="path842"
+      style="stroke-linejoin:round;stroke:#7f7f7f;stroke-linecap:round;stroke-width:2.5;fill:none"
+      transform="translate(.89973 -.17995)"
+      d="m7.3778 3.497v54.164"
+  />
+  <path
+      id="path843"
+      sodipodi:nodetypes="cc"
+      style="stroke-linejoin:round;stroke:#7f7f7f;stroke-linecap:round;stroke-width:2.5;fill:none"
+      d="m18.008 3.497v28.971"
+      transform="translate(.89973 -.17995)"
+  />
+  <path
+      id="path845"
+      sodipodi:nodetypes="cc"
+      style="stroke-linejoin:round;stroke:#7f7f7f;stroke-linecap:round;stroke-width:2.5;fill:none"
+      d="m28.638 3.497v8.817"
+      transform="translate(.89973 -.17995)"
+  />
+  <path
+      id="path846"
+      sodipodi:nodetypes="cc"
+      style="stroke-linejoin:round;stroke:#7f7f7f;stroke-linecap:round;stroke-width:2.5;fill:none"
+      d="m39.268 3.497v10.977"
+      transform="translate(.89973 -.17995)"
+  />
+  <path
+      id="path847"
+      style="stroke-linejoin:round;stroke:#7f7f7f;stroke-linecap:round;stroke-width:2.5;fill:none"
+      transform="translate(.89973 -.17995)"
+      d="m49.897 3.497v54.164"
+  />
+  <path
+      id="path837"
+      style="stroke-width:1pt;fill:#333333"
+      transform="matrix(3.4038 .94270 -.94270 3.4038 -4.4301 -13.001)"
+      d="m12.539 14.187v-0.539c-0.383-0.027-0.774-0.08-1.172-0.158-0.399-0.078-0.756-0.219-1.072-0.422-0.313-0.207-0.4692-0.483-0.4692-0.826 0-0.258 0.082-0.491 0.2462-0.698 0.168-0.207 0.373-0.31 0.615-0.31 0.106 0 0.295 0.058 0.568 0.176 0.274 0.117 0.497 0.205 0.668 0.263 0.176 0.059 0.381 0.088 0.616 0.088v-1.8807c-0.5-0.1524-0.92-0.3106-1.26-0.4746-0.34-0.168-0.615-0.3516-0.826-0.5508-0.211-0.2031-0.364-0.4219-0.4573-0.6563-0.0899-0.2343-0.1348-0.4941-0.1348-0.7793 0-0.3984 0.0703-0.7617 0.2111-1.0898 0.14-0.332 0.332-0.6172 0.574-0.8555 0.246-0.2422 0.533-0.4355 0.861-0.5801 0.329-0.1445 0.672-0.2304 1.032-0.2578v-0.5683c0-0.2383 0.119-0.3574 0.357-0.3574 0.242 0 0.363 0.1191 0.363 0.3574v0.5683c0.293 0.0078 0.604 0.0528 0.932 0.1348 0.332 0.0781 0.613 0.2109 0.844 0.3984 0.23 0.1875 0.345 0.4375 0.345 0.75 0 0.1524-0.035 0.3008-0.105 0.4453-0.066 0.1407-0.162 0.254-0.287 0.3399-0.121 0.0859-0.258 0.1289-0.41 0.1289-0.094 0-0.207-0.0293-0.34-0.0879-0.129-0.0586-0.246-0.1152-0.352-0.1699-0.105-0.0586-0.209-0.1055-0.31-0.1406-0.102-0.0391-0.207-0.0586-0.317-0.0586v1.7168c0.817 0.2226 1.471 0.5371 1.963 0.9433 0.496 0.4063 0.744 0.9905 0.744 1.7515 0 0.454-0.084 0.858-0.252 1.213-0.164 0.352-0.38 0.647-0.65 0.885-0.266 0.235-0.557 0.414-0.873 0.539s-0.627 0.199-0.932 0.223v0.539c0 0.238-0.121 0.357-0.363 0.357-0.238 0-0.357-0.119-0.357-0.357zm0-6.3106v-1.5c-0.196 0.0429-0.356 0.1347-0.481 0.2754-0.121 0.1367-0.181 0.3125-0.181 0.5273 0 0.1797 0.06 0.3281 0.181 0.4453 0.125 0.1172 0.285 0.2012 0.481 0.252zm0.72 2.1916v1.693c0.192 0 0.354-0.084 0.487-0.252 0.136-0.168 0.205-0.359 0.205-0.574 0-0.246-0.059-0.434-0.176-0.563-0.113-0.132-0.285-0.234-0.516-0.304z"
+  />
+  <path
+      id="path864"
+      sodipodi:nodetypes="cc"
+      style="stroke-linejoin:round;stroke:#7f7f7f;stroke-linecap:round;stroke-width:2.5;fill:none"
+      d="m18.008 45.424v12.237"
+      transform="translate(.89973 -.17995)"
+  />
+  <path
+      id="path865"
+      sodipodi:nodetypes="cc"
+      style="stroke-linejoin:round;stroke:#7f7f7f;stroke-linecap:round;stroke-width:2.5;fill:none"
+      d="m28.638 48.483v9.178"
+      transform="translate(.89973 -.17995)"
+  />
+  <path
+      id="path866"
+      sodipodi:nodetypes="cc"
+      style="stroke-linejoin:round;stroke:#7f7f7f;stroke-linecap:round;stroke-width:2.5;fill:none"
+      d="m39.268 44.525v13.136"
+      transform="translate(.89973 -.17995)"
+  />
+  <metadata
+    >
+    <rdf:RDF
+      >
+      <cc:Work
+        >
+        <dc:format
+          >image/svg+xml</dc:format
+        >
+        <dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        />
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        />
+        <dc:publisher
+          >
+          <cc:Agent
+              rdf:about="http://openclipart.org/"
+            >
+            <dc:title
+              >Openclipart</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:publisher
+        >
+        <dc:title
+          >ftjail pay</dc:title
+        >
+        <dc:date
+          >2011-01-31T02:01:39</dc:date
+        >
+        <dc:description
+          >Originally uploaded by Danny Allen for OCAL 0.18 this icon is part of the flat theme</dc:description
+        >
+        <dc:source
+          >https://openclipart.org/detail/112957/ftjail-pay-by-anonymous</dc:source
+        >
+        <dc:creator
+          >
+          <cc:Agent
+            >
+            <dc:title
+              >Anonymous</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:creator
+        >
+        <dc:subject
+          >
+          <rdf:Bag
+            >
+            <rdf:li
+              >flat</rdf:li
+            >
+            <rdf:li
+              >icon</rdf:li
+            >
+            <rdf:li
+              >theme</rdf:li
+            >
+          </rdf:Bag
+          >
+        </dc:subject
+        >
+      </cc:Work
+      >
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        >
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        />
+      </cc:License
+      >
+    </rdf:RDF
+    >
+  </metadata
+  >
+</svg
+>

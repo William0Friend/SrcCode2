@@ -1,6 +1,15 @@
 <x-app-guest>
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    {{--  <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function onSubmit(token) {
+          document.getElementById("demo-form").submit();
+        }
+      </script>  --}}
+      
+    {{--  <form method="POST" action="{{ route('register') }}">  --}}
+        <form method="POST" action="{{ route('register') }}" id="registerForm"> 
+
         @csrf
 
         <!-- Name -->
@@ -50,5 +59,6 @@
             </x-primary-button>
         </div>
     </form>
+ 
 </x-guest-layout>
 </x-app-guest>

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'smtp'),
+    'default' => env('MAIL_MAILER', 'mailgun'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,6 +52,9 @@ return [
 
         'mailgun' => [
             'transport' => 'mailgun',
+            'domain' => env('MAILGUN_DOMAIN'),
+            'secret' => env('MAILGUN_SECRET'),
+            // 'endpoint' => env('MAILGUN_ENDPOINT', 'api.eu.mailgun.net'),
             // 'client' => [
             //     'timeout' => 5,
             // ],
@@ -59,6 +62,8 @@ return [
 
         'postmark' => [
             'transport' => 'postmark',
+            'token' => env('POSTMARK_TOKEN'),
+            // 'message_stream_id' => env('POSTMARK_MESSAGE_STREAM_ID'),
             // 'client' => [
             //     'timeout' => 5,
             // ],
@@ -99,8 +104,11 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'william0friend.com'),
+        'name' => env('MAIL_FROM_NAME', 'William Friend'),
+        'reply_to' => ['address' => 'william0friend.com', 'name' => 'William Friend'],
+
+
     ],
 
     /*
