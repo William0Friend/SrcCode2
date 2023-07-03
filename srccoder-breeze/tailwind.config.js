@@ -10,6 +10,7 @@ export default {
     ],
 
     theme: {
+        darkMode: 'class', // or 'media' if you want to use media query
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],

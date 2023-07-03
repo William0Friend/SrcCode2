@@ -21,10 +21,20 @@ class AnswerController extends Controller
 //             'answers' => $answers,
 //         ]); //returns the view with posts
 //     }
-public function index()
+public function index($request)
 {
-    $answers = Auth::user()->answers()->paginate(10);
-    return view('answers.index', compact('answers'));
+
+    // $answers = Auth::user()->answers()->paginate(10);
+    // return view('answers.index', compact('answers'));
+    $query = Answer::query();// ->with('bounty');
+
+        if ($request->has('search')) {
+            $query->where('body', 'like', '%' . $request->search . '%');
+        }
+    
+        $answers = $query->get();
+    
+        return view('answers.index', compact('answers'));
 }
 
     /**
@@ -117,5 +127,12 @@ public function index()
 
         return redirect('/answer');
     }
+
+    public function upvote(Answer $answer)
+    {
+        $answer->increment('upvotes');
+        return redirect()->back();
+    }
+
 }
 

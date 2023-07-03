@@ -12,6 +12,12 @@ class Answer extends Model
 
     protected $guarded = [];
 
+    //eloquent relationships
+    public function upvotedUsers()
+    {
+        return $this->belongsToMany(User::class, 'user_answer_votes');
+    }
+
     public function question():BelongsTo { 
         return $this->belongsTo(Question::class, 'question_id', 'id');
     }

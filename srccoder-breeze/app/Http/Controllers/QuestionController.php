@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use App\Models\Bounty;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Stripe\Transfer;
 use Yajra\DataTables\Facades\DataTables;
 // use Yajra\DataTables\DataTables;
 // use Yajra\DataTables\Facades\DataTables;
@@ -138,7 +139,19 @@ class QuestionController extends Controller
 
         return redirect('question/' . $question->id);
     }
-        public function browse(Request $request)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Question $question)
+    {
+        //
+        $question->delete();
+
+        return redirect('/question');
+    }
+
+    // NON REST FUNCTIONS
+    public function browse(Request $request)
     {
         $query = Question::with('user', 'bounty');
         return DataTables::of($query)->make(true);
@@ -173,14 +186,26 @@ class QuestionController extends Controller
             ]);
         // ]);
     }
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Question $question)
-    {
-        //
-        $question->delete();
 
-        return redirect('/question');
+    // public function bestAnswer(Question $question, Answer $answer)
+    // {
+    //     $question->best_answer_id = $answer->id;
+    //     $question->save();
+
+    //     return redirect()->back();
+    // }
+    public function bestAnswer(Question $question, Answer $answer)
+    {
+        $question->best_answer_id = $answer->id;
+        $question->save();
+
+        $transfer = Transfer::create([
+        'amount' => $question->bounty->amount * 100,
+        'currency' => 'usd',
+        'destination' => $answer->user->stripe_account_id,
+        'transfer_group' => 'YOUR_TRANSFER_GROUP',
+        ]);
+
+        return redirect()->back();
     }
-}
+    }

@@ -22,9 +22,22 @@
             </div>
         </div>
 
+
+{{--  Answer part  --}}
         <div class="mt-6 space-y-6">
             @forelse($question->answers as $answer)
                 <article class="overflow-hidden bg-white shadow sm:rounded-lg">
+                    <header>
+                        {{-- upvote --}}
+                        @if (auth()->user())//Auth::user())
+                        <button type="button" onclick="location.href='{{ route('answers.upvote', $answer) }}'">Upvote</button>    
+                        @endif
+                        {{--  mark best answer by user  --}}
+                        @if (auth()->user()->id == $question->user_id)
+                            <button type="button" onclick="location.href='{{ route('questions.best-answer', [$question, $answer]) }}'">Mark as Best</button>
+                        @endif
+
+                    </header>
                     <div class="px-4 py-5 sm:px-6">
                         <div class="flex items-center space-x-3">
                             <img src="https://i.pravatar.cc/100?u={{$answer->user->id}}" alt="" class="w-10 h-10 rounded-full">
@@ -44,7 +57,7 @@
             @empty
                 <div class="text-center">
                     <p class="text-gray-600">
-                        <a href="#answerForm" class="text-indigo-600 hover:text-indigo-500">Be the first to answer this question!</a>
+                        <a href="/register" class="text-indigo-600 hover:text-indigo-500">Be the first to answer this question!</a>
                     </p>
                 </div>
             @endforelse

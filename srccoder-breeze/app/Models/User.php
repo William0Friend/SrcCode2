@@ -11,11 +11,12 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Billable;
 
     /**
      * The attributes that are mass assignable.
@@ -48,6 +49,12 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+        //eloquent relationships
+    public function upvotedAnswers()
+    {
+        return $this->belongsToMany(Answer::class, 'user_answer_votes');
+    }
+
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
@@ -61,7 +68,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Answer::class);
     }
-    
+
 
 
     //eloquent accessor
@@ -71,11 +78,13 @@ class User extends Authenticatable
     }
 
     //eloquent mutators
-    public function setPasswordAttribute($password): void
-    {
-        $this->attributes['password'] = bcrypt($password);
-    }
-  
+//    public function setPasswordAttribute($password): void
+//    {
+//        $this->attributes['password'] = bcrypt($password);
+//    }
+
+
+
     public function image(): MorphMany
     {
         //Usage:

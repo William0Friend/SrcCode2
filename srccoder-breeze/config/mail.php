@@ -13,8 +13,8 @@ return [
     |
     */
 
+    // 'default' => env('MAIL_MAILER', 'mailgun'),
     'default' => env('MAIL_MAILER', 'mailgun'),
-
     /*
     |--------------------------------------------------------------------------
     | Mailer Configurations
@@ -63,7 +63,7 @@ return [
         'postmark' => [
             'transport' => 'postmark',
             'token' => env('POSTMARK_TOKEN'),
-            // 'message_stream_id' => env('POSTMARK_MESSAGE_STREAM_ID'),
+            'message_stream_id' => env('POSTMARK_MESSAGE_STREAM_ID'),
             // 'client' => [
             //     'timeout' => 5,
             // ],

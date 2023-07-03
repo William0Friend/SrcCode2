@@ -1,6 +1,6 @@
 <?php
-$user = new App\Models\User();
-$user->name = 'WilliamFriend';
-$user->email = 'william.friend777@gmail.com';
-$user->password = bcrypt('!password');
-$user->save();
+//$user = new App\Models\User();
+//$user->name = 'William Friend';
+//$user->email = 'william.friend777@gmail.com';
+//$user->password ='password';
+//$user->save();

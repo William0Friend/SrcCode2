@@ -17,7 +17,7 @@ Debugbar::error('Error!');
 Debugbar::warning('Watch out…');
 Debugbar::addMessage('Another message', 'mylabel');
 
-<!doctype html>
+<!DOCTYPE html>
 
 <title>The Srccoder Blog</title>
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">

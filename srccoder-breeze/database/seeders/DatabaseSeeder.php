@@ -73,6 +73,19 @@ class DatabaseSeeder extends Seeder
         //  );
 
         Bounty::factory(100)->create();
+
+        Answer::factory(100)->create();
+        Answer::factory(30)->create(
+            [
+                'user_id' => $user->id
+            ]
+        );
+        Question::factory(100)->create();
+        Question::factory(30)->create(
+            [
+                'user_id' => $user->id
+            ]
+        );
         
         //Difficulty::factory(5)->create();
         

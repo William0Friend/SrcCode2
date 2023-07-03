@@ -1,5 +1,5 @@
 <x-app-guest>
-<x-guest-layout>
+
     {{--  <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
         function onSubmit(token) {
@@ -60,5 +60,5 @@
         </div>
     </form>
  
-</x-guest-layout>
+
 </x-app-guest>

@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\File;
 
 //Questions
 Route::get('/', [QuestionController::class, 'home'])->name('questions.home');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 // This will automatically create the necessary routes for the resourceful controller actions: index, create, store, show, edit, update, and destroy.
 Route::resource('questions', QuestionController::class);
 Route::resource('answers', AnswerController::class);
@@ -35,7 +38,7 @@ Route::get('/browse', function () {
 Route::get('/browse/data', [QuestionController::class, 'browse'])->name('questions.browse.data');
 
 Route::get('/about', [\App\Http\Controllers\SrccoderController::class, 'about'])->name('about');
-//Route::get('/register_recaptcha', [\App\Http\Controllers\SrccoderController::class, 'register']);
+// //Route::get('/register_recaptcha', [\App\Http\Controllers\SrccoderController::class, 'register']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -49,7 +52,7 @@ Route::get('/blog-welcome', function () {
 })->name('blog-welcome');
 // ->middleware(['auth', 'verified'])->name('blog-welcome');
 
-//give me the slug where the post that matches you provided Post::where('slug', $post)->firstOrFail();
+// //give me the slug where the post that matches you provided Post::where('slug', $post)->firstOrFail();
 Route::get('/posts/index',[PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('post');
 
@@ -70,7 +73,7 @@ Route::get('/profile/show', [ProfileController::class, 'show'])->name('profile.s
 
 //BLOG ROUTES
 Route::get('/blog', [\App\Http\Controllers\BlogPostController::class, 'index']);
-//route to show one post
+// //route to show one post
 Route::get('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'show']);
 Route::get('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'create']); //shows create post form
 Route::post('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'store']); //saves the created post to the databse
@@ -78,8 +81,18 @@ Route::get('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::c
 Route::put('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::class, 'update']); //commits edited post to the database
 Route::delete('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'destroy']); //deletes post from the database
 
+//upvotes
+Route::get('/answers/{answer}/upvote', [AnswerController::class, 'upvote'])->name('answers.upvote');
+//best answer route
+Route::get('/questions/{question}/best-answer/{answer}', [QuestionController::class, 'bestAnswer'])->name('questions.best-answer');
+
+Route::post(
+    'stripe/webhook',
+    '\Laravel\Cashier\Http\Controllers\WebhookController@handleWebhook'
+);
+
 require __DIR__.'/auth.php';
-// require __DIR__.'/old.php';
+//require __DIR__.'/old.php';
 // The route we have created to show all blog posts
 // Route::get('/blog/welcome', [\App\Http\Controllers\BlogPostController::class, 'welcome']);
 // Route::get('/browse', [QuestionController::class, 'browse'])->name('questions.browse');

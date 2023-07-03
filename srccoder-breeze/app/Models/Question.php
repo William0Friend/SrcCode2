@@ -23,6 +23,11 @@ class Question extends Model
     // public function answers(){
     //     return $this->hasMany(Answer::class, 'question_id', 'id');
     // }
+    public function bestAnswer()
+{
+    return $this->belongsTo(Answer::class, 'best_answer_id');
+}
+
     public function answers()
     {
         return $this->hasMany(Answer::class);
@@ -42,8 +47,9 @@ class Question extends Model
    }
     public function bounty(): HasOne
     {
-        return $this->hasOne(Bounty::class, 'question_id', 'id');
+        return $this->hasOne(Bounty::class);//, 'question_id', 'id');
     }
+    
     // // public function questionNotes(): HasOne
     // {
     //     return $this->hasOne(QuestionNotes::class);

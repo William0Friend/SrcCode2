@@ -16,4 +16,8 @@ class Bounty extends Model
     public function question():BelongsTo { 
         return $this->belongsTo(Question::class, 'question_id', 'id');
     }
+
+    public function user():BelongsTo { 
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }
