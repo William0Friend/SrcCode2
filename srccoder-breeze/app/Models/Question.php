@@ -27,7 +27,17 @@ class Question extends Model
 {
     return $this->belongsTo(Answer::class, 'best_answer_id');
 }
+public function chargeBounty() 
+{
+    $user = $this->user;
 
+    try {
+        $user->invoiceFor('Question Bounty', $this->bounty * 100); // Stripe charges in cents
+        return true;
+    } catch (\Exception $e) {
+        return false;
+    }
+}
     public function answers()
     {
         return $this->hasMany(Answer::class);

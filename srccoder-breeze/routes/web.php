@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\QuestionController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 use Symfony\Component\Yaml\Yaml;
 use Illuminate\Support\Facades\File;
-
+use App\Http\Controllers\PaymentController;
 
 //Questions
 Route::get('/', [QuestionController::class, 'home'])->name('questions.home');
@@ -82,14 +83,35 @@ Route::put('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::c
 Route::delete('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'destroy']); //deletes post from the database
 
 //upvotes
-Route::get('/answers/{answer}/upvote', [AnswerController::class, 'upvote'])->name('answers.upvote');
+// laravel
+// Route::get('/answers/{answer}/upvote', [AnswerController::class, 'upvote'])->name('answers.upvote');
+// ajax
+Route::post('/answers/{answer}/upvote', [AnswerController::class, 'upvote'])->name('answers.upvote');
+
 //best answer route
 Route::get('/questions/{question}/best-answer/{answer}', [QuestionController::class, 'bestAnswer'])->name('questions.best-answer');
 
-Route::post(
-    'stripe/webhook',
-    '\Laravel\Cashier\Http\Controllers\WebhookController@handleWebhook'
-);
+//stripe 
+Route::post('questions/{question}/award', [App\Http\Controllers\QuestionController::class, 'award'])->name('questions.award');
+Route::post('charge', [App\Http\Controllers\PaymentController::class, 'charge'])->name('charge');
+
+Route::post('/payment', [PaymentController::class, 'makePayment'])->name('payment.make');
+
+Route::get('/billing-portal', function (Request $request) {
+    return $request->user()->redirectToBillingPortal();
+})->name('billing.portal');
+//Route::post('/checkout', [PaymentController::class, 'checkout'])->name('checkout');
+Route::get('/checkout', [PaymentController::class, 'show'])->name('checkout.show');
+Route::post('/checkout', [PaymentController::class, 'store'])->name('checkout.store');
+
+// Route::get('/payment', [PaymentController::class, function(){
+//     return view('payment');
+// }])->name('payment.make');
+
+// Route::post(
+//     'stripe/webhook',
+//     '\Laravel\Cashier\Http\Controllers\WebhookController@handleWebhook'
+// );
 
 require __DIR__.'/auth.php';
 //require __DIR__.'/old.php';

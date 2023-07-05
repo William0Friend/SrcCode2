@@ -56,7 +56,7 @@
         </div>
     </section>
     
-    {{--  <!-- How It Works Section -->  --}}
+     {{--  <!-- How It Works Section -->  --}}
 <section id="how-it-works" class="my-auto rounded-lg lg:py-8 lg:p-12 sm:p-0 ">
     <div class="container p-10 mx-auto text-black bg-white border shadow-2xl border-spacing-10 sm:p-0">
         <div class="grid grid-cols-1 text-center lg:my-10 md:grid-cols-3">
@@ -89,14 +89,55 @@
             <div class="flex flex-col space-y-4">
                 <h2 class="text-xl font-semibold">Step 3</h2>
                 <p class="mb-2">Work together to bring your project to life.</p>
-                <small>Use the about page to learn more about srccode</small>
+                <small>Click the about page to learn more about srccode</small>
                 <a href="/about" class="px-4 py-2 mx-4 my-2 font-bold text-white bg-red-500 rounded-lg hover:bg-red-700">About</a>
                 <p class="mt-2">Use our srccoder-pedia, or view our srccoder-news</p>
             </div>
         </div>
     </div>
-</section>
-
+</section>  
+{{-- <!--   
+    <section id="how-it-works" class="my-auto rounded-lg lg:py-8 lg:p-12 sm:p-0 ">
+    <div class="container p-10 mx-auto text-black bg-white border shadow-2xl border-spacing-10 sm:p-0">
+        <div class="flex-col text-center lg:flex md:grid md:grid-cols-3 lg:my-10">
+            <div class="flex flex-col space-y-4">
+                <h2 class="text-xl font-semibold">Step 1</h2>
+                <div>
+                    <h4 class="font-bold">a.</h4>
+                    <p class="mb-2">If not a member, register</p>
+                    <a href="/register" class="px-4 py-2 mx-4 my-2 font-bold text-white bg-red-500 rounded-lg md:px-8 md:py-4 hover:bg-red-700">Register</a>
+                </div>
+                <div>
+                    <h4 class="font-bold">b.</h4>
+                    <p class="mb-2">If a member, login</p>
+                    <a href="/login" class="px-4 py-2 mx-4 my-2 font-bold text-white bg-red-500 rounded-lg md:px-8 md:py-4 hover:bg-red-700">Login</a>
+                </div>
+            </div>
+            <div class="flex flex-col space-y-4">
+                <h2 class="text-xl font-semibold">Step 2</h2>
+                <div>
+                    <h4 class="font-bold">a.</h4>
+                    <p class="mb-2">Ask a question or propose a project</p>
+                    <a href="/question.create" class="px-4 py-2 mx-4 my-2 font-bold text-white bg-red-500 rounded-lg md:px-8 md:py-4 hover:bg-red-700">Connect</a>
+                </div>
+                <div>
+                    <h4 class="font-bold">b.</h4>
+                    <p class="mb-2">If you are an expert and/or developer, browse our questions</p>
+                    <a href="/question.browse" class="px-4 py-2 mx-4 my-2 font-bold text-white bg-red-500 rounded-lg md:px-8 md:py-4 hover:bg-red-700">Browse</a>
+                </div>
+            </div>
+            <div class="flex flex-col space-y-4">
+                <h2 class="text-xl font-semibold">Step 3</h2>
+                <p class="mb-2">Work together to bring your project to life.</p>
+                <small>Use the about page to learn more about srccode</small>
+                <a href="/about" class="px-4 py-2 mx-4 my-2 font-bold text-white bg-red-500 rounded-lg md:px-8 md:py-4 hover:bg-red-700">About</a>
+                <p class="mt-2">Use our srccoder-pedia, or view our srccoder-news</p>
+            </div>
+        </div>
+    </div>
+</section>  
+--> --}}
+    
     {{--  <!-- Recent Questions Feed -->  --}}
     <section id="recentQuestions" class="py-12 bg-gray-100 shadow-2xl">
         <div class="items-center px-4 mx-auto max-w-7xl sm:px-6 lg:bg-lg:px-8">

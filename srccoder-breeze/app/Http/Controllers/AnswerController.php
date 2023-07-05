@@ -127,12 +127,21 @@ public function index($request)
 
         return redirect('/answer');
     }
+// laravel
+    // public function upvote(Answer $answer)
+    // {
+    //     $answer->increment('upvotes');
+    //     return redirect()->back();
+    // }
+// jquery 
+public function upvote(Answer $answer)
+{
+    $answer->increment('upvotes');
 
-    public function upvote(Answer $answer)
-    {
-        $answer->increment('upvotes');
-        return redirect()->back();
-    }
-
+    // Instead of redirecting, return a JSON response with the new upvote count
+    return response()->json([
+        'upvotes' => $answer->upvotes,
+    ]);
+}
 }
 

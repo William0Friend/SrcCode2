@@ -27,7 +27,7 @@ return new class extends Migration
             $table->foreignId('question_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->integer('bounty');
-            $table->string('payment_intent_id');
+            $table->string('payment_intent_id')->default("-1");
             $table->boolean('status')->default(1); // 1 for open, 0 for closed
             $table->timestamps();
         });

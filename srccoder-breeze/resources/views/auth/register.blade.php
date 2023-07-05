@@ -1,4 +1,4 @@
-<x-app-guest>
+<x-my-guest>
 
     {{--  <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
@@ -61,4 +61,4 @@
     </form>
  
 
-</x-app-guest>
+</x-my-guest>

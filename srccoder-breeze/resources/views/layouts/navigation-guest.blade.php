@@ -96,7 +96,16 @@
                             {{ __('About') }}
                         </x-nav-link>
                     </div>
-                    
+                    {{--  <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('billing-portal')" :active="request()->routeIs('billing-portal')">
+                            {{ __('Billing') }}
+                        </x-nav-link>
+                    </div>  --}}
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('checkout.show')" :active="request()->routeIs('checkout.show')">
+                            {{ __('checkout') }}
+                        </x-nav-link>
+                    </div>
 @endauth
             </div>
 @guest
@@ -260,6 +269,11 @@
                         {{ __('Browse') }}
                     </x-responsive-nav-link>
                 </div>
+                {{--  <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('payment.make')" :active="request()->routeIs('payment.make')">
+                        {{ __('Add Payment Method') }}
+                    </x-responsive-nav-link>
+                </div>  --}}
                 {{--  <div class="pt-2 pb-3 space-y-1">
                     <x-responsive-nav-link :href="route('profile.show')" :active="request()->routeIs('profile.show')">
                         {{ __('Profile') }}

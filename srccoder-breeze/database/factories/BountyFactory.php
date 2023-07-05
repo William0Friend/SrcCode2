@@ -28,7 +28,8 @@ class BountyFactory extends Factory
             'user_id' => User::factory(), //Generates a User from factory and extracts id
             'question_id' => Question::factory(), //Generates a Question from factory and extracts id
             'bounty'=> $this->faker->randomDigitNotZero(),
-            'status'=> $this->faker->boolean()
+            'status'=> $this->faker->boolean(),
+        
 
         ];
     }

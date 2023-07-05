@@ -106,7 +106,7 @@ return [
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'william0friend.com'),
         'name' => env('MAIL_FROM_NAME', 'William Friend'),
-        'reply_to' => ['address' => 'william0friend.com', 'name' => 'William Friend'],
+        'reply_to' => ['address' => 'william0friend@gmail.com', 'name' => 'William Friend'],
 
 
     ],

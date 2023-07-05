@@ -19,20 +19,10 @@ class QuestionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    // public function index()
-    // {
-    //     // fetch and return all blog posts
-    //     $questions = Question::all(); //fetch all blog posts from DB
-    //     //raw json
-    //     //return $posts; //returns the fetched posts
-    //     return view('question.index', [
-    //         'questions' => $questions,
-    //     ]); //returns the view with posts
-    // }
+
     public function index(Request $request)
     {
-        // $questions = Question::with('bounty')->get();
-        // return view('questions.index', compact('questions'));
+;
         $query = Question::query()->with('bounty');
 
         if ($request->has('search')) {
@@ -57,10 +47,42 @@ class QuestionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    //store without the stripe
+    //  public function store(Request $request)
+    //  {
+    //      $validatedData = $request->validate([
+    //          'title' => 'required|max:255',
+    //          'body' => 'required',
+    //          'bounty' => 'nullable|integer|min:0',
+    //      ]);
+     
+    //      // Save the question
+    //      $question = new Question();
+    //      $question->title = $validatedData['title'];
+    //      $question->body = $validatedData['body'];
+    //      $question->user_id = auth()->user()->id; 
+    //     //  $question->save();
+     
+    //      // Generate a slug from the title and id
+    //      $question->slug = Str::slug($validatedData['title']) . '-' . $question->id;
+    //      $question->save();
+     
+    //      // If a bounty was set, save it
+    //      if ($validatedData['bounty']) {
+    //          $bounty = new Bounty();
+    //          $bounty->question_id = $question->id;
+    //          $bounty->user_id = auth()->user()->id; 
+    //          $bounty->bounty = $validatedData['bounty'];
+    //          $bounty->save();
+    //      }
+     
+    //      return redirect()->route('questions.show', [$question->slug], );
+    //  }
 
-     public function store(Request $request)
+    //store with stripe
+   public function store(Request $request)
      {
-         $validatedData = $request->validate([
+         $validated = $request->validate([
              'title' => 'required|max:255',
              'body' => 'required',
              'bounty' => 'nullable|integer|min:0',
@@ -68,37 +90,46 @@ class QuestionController extends Controller
      
          // Save the question
          $question = new Question();
-         $question->title = $validatedData['title'];
-         $question->body = $validatedData['body'];
+         $question->title = $validated['title'];
+         $question->body = $validated['body'];
          $question->user_id = auth()->user()->id; 
         //  $question->save();
      
          // Generate a slug from the title and id
-         $question->slug = Str::slug($validatedData['title']) . '-' . $question->id;
+         $question->slug = Str::slug($validated['title']) . '-' . $question->id;
          $question->save();
      
          // If a bounty was set, save it
-         if ($validatedData['bounty']) {
+         if ($validated['bounty']) {
              $bounty = new Bounty();
              $bounty->question_id = $question->id;
-             $bounty->bounty = $validatedData['bounty'];
+             $bounty->user_id = auth()->user()->id; 
+             $bounty->bounty = $validated['bounty'];
              $bounty->save();
          }
-     
-         return redirect()->route('questions.show', [$question->slug], );
+    
+         // assume that the user has a default payment method setup.
+        // TODO: need to handle the case where the user does not have a payment method.
+        if ($bounty->bounty >= 0) {
+            $user = auth()->user();
+    
+            try {
+                $user->invoiceFor('Question Bounty', $bounty * 100); // Stripe charges in cents
+            } catch (\Exception $e) {
+                return redirect()->back()->withErrors(['Unable to process payment.']);
+            }
+        }
+    
+        $question = auth()->user()->questions()->create($validated);  //     $bounty = $validated['bounty'];    
+        return redirect()->route('questions.show', [$question->slug], );
      }
+
+
+
 
     /**
      * Display the specified resource.
      */
-    // public function show(Question $question)
-    // {
-    //     //
-    //     //return $blogPost; //returns the fetched posts
-    //     return view('question.show', [
-    //         'question' => $question,
-    //     ]); //returns the view with the post
-    // }
     public function show($slug)
     {
         $question = Question::with('bounty')->where('slug', $slug)->firstOrFail();
@@ -108,13 +139,6 @@ class QuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    // public function edit(Question $question)
-    // {
-    //     //
-    //     return view('question.edit', [
-    //         'question' => $question,
-    //     ]); //returns the edit view with the post
-    // }
     public function edit($slug)
     {
         $question = Question::where('slug', $slug)->firstOrFail();
@@ -194,6 +218,7 @@ class QuestionController extends Controller
 
     //     return redirect()->back();
     // }
+// NOT DONE PAYMENT ATTEMPT
     public function bestAnswer(Question $question, Answer $answer)
     {
         $question->best_answer_id = $answer->id;
@@ -208,4 +233,52 @@ class QuestionController extends Controller
 
         return redirect()->back();
     }
+
+    public function award(Request $request, Question $question)
+{
+    $this->authorize('update', $question);
+
+    // Get the selected answer
+    $answer = Answer::findOrFail($request->input('answer_id'));
+
+    // Update the best answer id
+    $question->best_answer_id = $answer->id;
+    $question->save();
+
+    // Charge the user
+    return redirect()->route('charge', [
+        'amount' => $question->bounty,
+        'description' => 'Bounty for question id:' . $question->id,
+    ]);
+}
+public function awardBounty(Question $question, Answer $answer)
+{
+    if (auth()->id() !== $question->user_id) {
+        abort(403);
+    }
+
+    if (!$question->bounty) {
+        return redirect()->back()->withErrors(['No bounty to award.']);
+    }
+
+    if ($answer->is_best) {
+        return redirect()->back()->withErrors(['Bounty already awarded for this question.']);
+    }
+
+    // transfer bounty to the user who provided the best answer
+    $payout = $answer->user->payout($question->bounty * 100); // Stripe works with cents
+
+    // Mark the answer as the best answer
+    $answer->is_best = true;
+    $answer->save();
+
+    // Remove bounty from question
+    $question->bounty = null;
+    $question->save();
+
+    return redirect()->route('questions.show', $question)->with('success', 'Bounty awarded.');
+}
+
+
+
     }

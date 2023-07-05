@@ -24,9 +24,17 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 //    protected $fillable = [
-//        'name',
-//        'email',
-//        'password',
+    //    //'name',
+    //    //'email',
+// //        'password',
+// 'id',
+// 'username',
+// 'email',
+// 'password',
+// 'stripe_id',
+// 'card_brand',
+// 'card_last_four',
+// 'trial_ends_at',
 //    ];
     protected $guarded = [];
     /**
@@ -77,6 +85,29 @@ class User extends Authenticatable
         return ucwords($username);
     }
 
+
+
+//Stripe
+
+    public function addPaymentMethod($paymentMethod) 
+    {
+        $this->createOrGetStripeCustomer();
+        $this->addPaymentMethod($paymentMethod);
+        
+        return $this;
+    }
+    
+    public function removePaymentMethod($paymentMethodId) 
+    {
+        $paymentMethod = $this->findPaymentMethod($paymentMethodId);
+        
+        if ($paymentMethod) {
+            $paymentMethod->delete();
+        }
+        
+        return $this;
+    }
+
     //eloquent mutators
 //    public function setPasswordAttribute($password): void
 //    {
@@ -85,25 +116,25 @@ class User extends Authenticatable
 
 
 
-    public function image(): MorphMany
-    {
-        //Usage:
-        // use App\Models\User;
-        // $user = User::find(1);
-        // foreach ($user->images as $image) {
-    // ...
-            return $this->morphMany(Image::class, 'imageable');
-    }
-    // public function bestImage(): MorphOne
+    // public function image(): MorphMany
     // {
-    //     return $this->morphOne(Image::class, 'imageable')->ofMany('likes', 'max');
+    //     //Usage:
+    //     // use App\Models\User;
+    //     // $user = User::find(1);
+    //     // foreach ($user->images as $image) {
+    // // ...
+    //         return $this->morphMany(Image::class, 'imageable');
     // }
-    public function latestImage(): MorphOne
-    {
-        return $this->morphOne(Image::class, 'imageable')->latestOfMany();
-    }
-    public function oldestImage(): MorphOne
-    {
-        return $this->morphOne(Image::class, 'imageable')->oldestOfMany();
-    }
+    // // public function bestImage(): MorphOne
+    // // {
+    // //     return $this->morphOne(Image::class, 'imageable')->ofMany('likes', 'max');
+    // // }
+    // public function latestImage(): MorphOne
+    // {
+    //     return $this->morphOne(Image::class, 'imageable')->latestOfMany();
+    // }
+    // public function oldestImage(): MorphOne
+    // {
+    //     return $this->morphOne(Image::class, 'imageable')->oldestOfMany();
+    // }
 }

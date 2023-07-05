@@ -6,16 +6,16 @@
             <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
             <ul class="font-medium text-gray-500 dark:text-gray-400">
                 <li class="mb-4">
-                    <a href="#" class=" hover:underline">About</a>
+                    <a href="/about" class=" hover:underline">About</a>
                 </li>
                 <li class="mb-4">
-                    <a href="#" class="hover:underline">Careers</a>
+                    <a href="/browse" class="hover:underline">Browse</a>
                 </li>
                 <li class="mb-4">
-                    <a href="#" class="hover:underline">Brand Center</a>
+                    <a href="/posts/index" class="hover:underline">News</a>
                 </li>
                 <li class="mb-4">
-                    <a href="#" class="hover:underline">Blog</a>
+                    <a href="/blog-welcome" class="hover:underline">Documentation</a>
                 </li>
             </ul>
         </div>
@@ -23,16 +23,16 @@
             <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Help center</h2>
             <ul class="font-medium text-gray-500 dark:text-gray-400">
                 <li class="mb-4">
-                    <a href="#" class="hover:underline">Discord Server</a>
+                    <a href="www.discord.com" class="hover:underline">Discord Server</a>
                 </li>
                 <li class="mb-4">
-                    <a href="#" class="hover:underline">Twitter</a>
+                    <a href="www.twitter.com" class="hover:underline">Twitter</a>
                 </li>
                 <li class="mb-4">
-                    <a href="#" class="hover:underline">Facebook</a>
+                    <a href="www.william0friend.github.io" class="hover:underline">Founder</a>
                 </li>
-                <li class="mb-4">
-                    <a href="#" class="hover:underline">Contact Us</a>
+                <li class="/contact">
+                    <a href="" class="hover:underline">Contact Us</a>
                 </li>
             </ul>
         </div>
@@ -51,7 +51,7 @@
             </ul>
         </div>
         <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Download</h2>
+            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">MarketPlace</h2>
             <ul class="font-medium text-gray-500 dark:text-gray-400">
                 <li class="mb-4">
                     <a href="#" class="hover:underline">iOS</a>
@@ -69,7 +69,7 @@
         </div>
     </div>
     <div class="px-4 py-6 bg-gray-100 dark:bg-gray-700 md:flex md:items-center md:justify-between lg:w-full sm-w-full">
-        <span class="text-sm text-gray-500 dark:text-gray-300 sm:text-center">© 2023 <a href="https://flowbite.com/">Flowbite™</a>. All Rights Reserved.
+        <span class="text-sm text-gray-500 dark:text-gray-300 sm:text-center">© 2023 <a href="https://srccoder.com/">srccoder™</a>. All Rights Reserved.
         </span>
         <div class="flex mt-4 space-x-6 sm:justify-center md:mt-0">
             <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
