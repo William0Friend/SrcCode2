@@ -1,5 +1,6 @@
-{{--  <x-app-guest>
-<x-guest-layout>  --}}
+  <x-app-guest>
+{{--<x-guest-layout>  --}}
+<div class="flex items-center justify-center my-10">
     <form method="POST" action="{{ route('password.store') }}">
         @csrf
 
@@ -37,5 +38,6 @@
             </x-primary-button>
         </div>
     </form>
-{{--  </x-guest-layout>
-</x-app-guest>  --}}
+</div>
+{{--  </x-guest-layout>--}}
+</x-app-guest>  

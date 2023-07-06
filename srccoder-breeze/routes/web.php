@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\QuestionController;
+use App\Mail\MyTestEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PostController;
@@ -12,11 +13,14 @@ use App\Models\Question;
 use App\Models\User;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 use Symfony\Component\Yaml\Yaml;
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\StripeController;
+
 
 //Questions
 Route::get('/', [QuestionController::class, 'home'])->name('questions.home');
@@ -95,7 +99,7 @@ Route::get('/questions/{question}/best-answer/{answer}', [QuestionController::cl
 Route::post('questions/{question}/award', [App\Http\Controllers\QuestionController::class, 'award'])->name('questions.award');
 Route::post('charge', [App\Http\Controllers\PaymentController::class, 'charge'])->name('charge');
 
-Route::post('/payment', [PaymentController::class, 'makePayment'])->name('payment.make');
+Route::post('/payments', [PaymentController::class, 'makePayment'])->name('payment.make');
 
 Route::get('/billing-portal', function (Request $request) {
     return $request->user()->redirectToBillingPortal();
@@ -103,6 +107,35 @@ Route::get('/billing-portal', function (Request $request) {
 //Route::post('/checkout', [PaymentController::class, 'checkout'])->name('checkout');
 Route::get('/checkout', [PaymentController::class, 'show'])->name('checkout.show');
 Route::post('/checkout', [PaymentController::class, 'store'])->name('checkout.store');
+
+Route::get('/stripe', [StripeController::class, 'stripe']);
+Route::post('/stripe', [StripeController::class, 'stripePost'])->name('stripe.post');
+
+
+Route::get('/payment', [PaymentController::class, "index"]);
+Route::post('/charge', [PaymentController::class, "pay"]);
+
+// email
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->name('verification.notice');
+});
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/testroute', function() {
+        // $name = "Funny Coder";
+        // The name variable is passed to the MyTestEmail class
+        // The $name variable is used in the build method of the MyTestEmail class
+        $name = auth()->user()->name;
+        // The email sending is done using the to method on the Mail facade
+        // Mail::to("william.friend777@gmail.com")->send(new MyTestEmail($name));
+        Mail::to(auth()->user()->name)->send(new MyTestEmail($name));
+
+    });
+})->name('testroute');
+//->name('stripe.post');
 
 // Route::get('/payment', [PaymentController::class, function(){
 //     return view('payment');

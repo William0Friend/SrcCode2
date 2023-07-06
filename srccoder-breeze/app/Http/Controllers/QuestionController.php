@@ -93,10 +93,10 @@ class QuestionController extends Controller
          $question->title = $validated['title'];
          $question->body = $validated['body'];
          $question->user_id = auth()->user()->id; 
-        //  $question->save();
+         //$question->save();
      
          // Generate a slug from the title and id
-         $question->slug = Str::slug($validated['title']) . '-' . $question->id;
+         $question->slug = Str::slug($validated['title']) . '-' . auth()->user()->id;
          $question->save();
      
          // If a bounty was set, save it
@@ -110,17 +110,17 @@ class QuestionController extends Controller
     
          // assume that the user has a default payment method setup.
         // TODO: need to handle the case where the user does not have a payment method.
-        if ($bounty->bounty >= 0) {
-            $user = auth()->user();
+        // if ($bounty->bounty >= 0) {
+        //     $user = auth()->user();
     
-            try {
-                $user->invoiceFor('Question Bounty', $bounty * 100); // Stripe charges in cents
-            } catch (\Exception $e) {
-                return redirect()->back()->withErrors(['Unable to process payment.']);
-            }
-        }
+        //     try {
+        //         $user->invoiceFor('Question Bounty', $bounty * 100); // Stripe charges in cents
+        //     } catch (\Exception $e) {
+        //         return redirect()->back()->withErrors(['Unable to process payment.']);
+        //     }
+        // }
     
-        $question = auth()->user()->questions()->create($validated);  //     $bounty = $validated['bounty'];    
+        // $question = auth()->user()->questions()->create($validated);  //     $bounty = $validated['bounty'];    
         return redirect()->route('questions.show', [$question->slug], );
      }
 

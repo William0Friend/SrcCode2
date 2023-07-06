@@ -21,12 +21,17 @@
                 </div>
             </div>
         </div>
-
-        @if(auth()->user()->id == $question->user_id and $question->answers->count() > 0)
+@if(Auth::check())
+        @if((auth()->user()->id === $question->user_id) and $question->answers->count() > 0)
         <div class="my-5 text-center">
             <h3 class="inline-block px-2 py-1 my-1 text-2xl font-extrabold text-white bg-gray-700 border border-red-700 rounded">Your Answers Are Below</h3>
-        </div>
+        </div>    
         @endif
+
+@else
+    <a class="p-1 m-1 text-white bg-blue-900 border rounded border-blue-950 sm:mx-auto sm:justify-center sm:items-center" href="/login">Sign in to see more!</a>
+@endif
+
 
 {{--  Answer part  --}}
         <div class="mt-6 space-y-6">
@@ -34,7 +39,7 @@
                 <article class="overflow-hidden bg-white shadow sm:rounded-lg">
                     
                         {{-- upvote --}}
-                        @if (auth()->user()->id != $answer->user_id)
+                        @if (auth()->user()->id !== $answer->user_id)
                         {{--  upvote button on the right  --}}
                         <div class="flex w-auto h-auto mx-auto text-xl font-bold text-white bg-gray-800 hover:rounded justify-left items-left hover:bg-red-700">
                             {{--  <button type="button" id="upvote-button" onclick="upvote()" onclick="location.href='{{ route('answers.upvote', $answer) }}'">Upvote</button>      --}}
@@ -115,18 +120,23 @@
             @empty
                 <div class="text-center">
                     <p class="text-gray-600">
-                        @if(auth()->user()->id == $question->user_id and $question->answers->count() == 0)
+                    @if(Auth::check())
+                        @if(auth()->user()->id === $question->user_id and $question->answers->count() == 0)
                             <a href="/register" class="text-indigo-600 hover:text-indigo-500">Users will answer your question soon!</a>
                         @endif
-                        @if(auth()->user()->id != $question->user_id and $question->answers->count() == 0)
+                        @if(auth()->user()->id !== $question->user_id and $question->answers->count() == 0)
                             <a href="/register" class="text-indigo-600 hover:text-indigo-500">Be the first to answer this question!</a>
                         @endif
+                   @else
+                        <a href="/register" >Create an account to see more, and do more.</a>
+                    @endif
                     </p>
                 </div>
             @endforelse
         </div>
 
         @if(auth()->check())
+   
             <div class="my-5 text-center">
                 @if(auth()->user()->id == $question->user_id and $question->answers->count() > 0)
                      <h3 class="inline-block px-2 py-1 my-1 text-2xl font-extrabold text-white bg-gray-700 border border-red-700 rounded">Your Answers Are Above</h3>
@@ -135,9 +145,10 @@
                     <h3 class="inline-block px-2 py-1 text-2xl font-extrabold text-white bg-gray-700 border border-red-700 rounded">Submit an Answer</h3>
                 @endif
           </div>
-        @endif
+          @endif
             @include('answers._form')
-        @if(!auth()->check())
+        
+        @if(!Auth::check())
             <div class="text-center text-gray-600">
                 <p>You must be logged in to submit an answer.</p>
             </div>

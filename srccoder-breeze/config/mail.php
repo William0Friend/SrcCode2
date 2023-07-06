@@ -14,7 +14,7 @@ return [
     */
 
     // 'default' => env('MAIL_MAILER', 'mailgun'),
-    'default' => env('MAIL_MAILER', 'mailgun'),
+    'default' => env('MAIL_MAILER', 'smtp'),
     /*
     |--------------------------------------------------------------------------
     | Mailer Configurations
@@ -60,6 +60,15 @@ return [
             // ],
         ],
 
+        'mailtrap' => [
+            'transport' => 'mailtrap',
+            // 'domain' => env('MAILTRAP_DOMAIN'),
+            // 'secret' => env('MAILTRAP_SECRET'),
+            // 'endpoint' => env('MAILGUN_ENDPOINT', 'api.eu.mailgun.net'),
+            // 'client' => [
+            //     'timeout' => 5,
+            // ],
+       ],
         'postmark' => [
             'transport' => 'postmark',
             'token' => env('POSTMARK_TOKEN'),
@@ -105,8 +114,8 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'william0friend.com'),
-        'name' => env('MAIL_FROM_NAME', 'William Friend'),
-        'reply_to' => ['address' => 'william0friend@gmail.com', 'name' => 'William Friend'],
+          'name' => env('MAIL_FROM_NAME', 'William Friend'),
+        // 'reply_to' => ['address' => 'william0friend@gmail.com', 'name' => 'William Friend'],
 
 
     ],
