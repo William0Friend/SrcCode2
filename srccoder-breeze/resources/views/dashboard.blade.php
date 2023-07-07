@@ -1,7 +1,7 @@
 <x-app-guest>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-            {{ __('Dashboard') }}
+            {{ __('Welcome To The SrCodeR Dashboard') }}
         </h2>
     </x-slot>
 
@@ -10,6 +10,24 @@
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-12">
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    @php
+                    $user = Auth::user();
+                    @endphp
+                    @if ($user->email_verified_at) 
+                        <p>User is verified. <bold><small>: )</small></bold></p>
+                    @else 
+                       <p>User is not verified.</p>
+                        <button>Click to resend verification link</button>
+                    @endif
                 </div>
             </div>
         </div>
