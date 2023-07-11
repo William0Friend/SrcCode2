@@ -10,13 +10,24 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController; // Import the custom RegisterController
+use App\Http\Controllers\Auth\LoginController;
+
+
 
 Route::middleware('guest')->group(function () {
-    Route::get('register', [RegisteredUserController::class, 'create'])
-                ->name('register');
-
-    Route::post('register', [RegisteredUserController::class, 'store']);
-
+    
+    //breeze
+    // Route::get('register', [RegisteredUserController::class, 'create'])
+    //             ->name('register');
+    // Route::post('register', [RegisteredUserController::class, 'store']);
+    
+    //abuseipdb
+    Route::get('register', [RegisterController::class, 'create'])->name('register'); // Display registration form
+    Route::post('register', [RegisterController::class, 'register']); // Handle registration
+    // Route::post('login', [LoginController::class, 'login'])->name('login');
+    
+    //breeze
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
 

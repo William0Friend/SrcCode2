@@ -12,6 +12,11 @@
 
         @csrf
 
+        {{--  for abuseipdb check --}}
+        <!-- IP Address (Hidden) -->
+        <input type="hidden" name="ip" value="{{ request()->ip() }}">
+    
+
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />
@@ -21,7 +26,7 @@
 
         <!-- Email Address -->
         <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
+            <x-input-label for="email" :value="__('Email')" />  
             <x-text-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
@@ -59,6 +64,16 @@
             </x-primary-button>
         </div>
     </form>
- 
 
+ {{--  ABUSEIPDB ERROR  --}}
+    @if($errors->any())
+    @include('dispute._form')
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 </x-my-guest>

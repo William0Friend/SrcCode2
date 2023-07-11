@@ -20,7 +20,7 @@ use Symfony\Component\Yaml\Yaml;
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StripeController;
-
+use App\Http\Controllers\DisputeController;
 
 //Questions
 Route::get('/', [QuestionController::class, 'home'])->name('questions.home');
@@ -136,6 +136,11 @@ Route::middleware('auth')->group(function () {
     });
 })->name('testroute');
 //->name('stripe.post');
+
+//ABUSEIPDB
+Route::get('dispute', [DisputeController::class, 'create'])->name('dispute.create');
+Route::post('dispute', [DisputeController::class, 'store'])->name('dispute.store');
+
 
 // Route::get('/payment', [PaymentController::class, function(){
 //     return view('payment');

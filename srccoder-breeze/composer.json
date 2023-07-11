@@ -79,6 +79,11 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
-    
+    "prefer-stable": true,
+    "repositories": {
+        "abuseipdb": {
+            "type": "path",
+            "url": "../../../gits/abuseipdb/laravel/src"
+        }
+    }
 }

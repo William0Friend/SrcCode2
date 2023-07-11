@@ -203,4 +203,34 @@
         </div>
     </section>
 
+     {{--  ABUSEIPDB svg  --}}
+    <section id="abuseipdb" class="flex py-12">
+        <div class="container p-4 mx-auto text-black bg-white border border-black shadow-xl border-spacing-10">
+            <h2 class="my-8 text-center border-b-2 border-red-700"> <a class="" href="https://www.abuseipdb.com/=" title="AbuseIPDB is an IP address blacklist for webmasters and sysadmins to report IP addresses engaging in abusive behavior on their networks">
+                        AbuseIPDB
+                    </a></h2>
+            <div class="grid grid-cols-1 gap-4 text-center">
+                <p class="p-4 my-4 text-white bg-black border-white rounded-lg shadow-md border-spacing-10">
+               Site is monitored by</p> 
+                </div>
+            <div class="grid p-4 my-4 text-white bg-black border-white rounded-lg shadow-md grid-col-1 border-spacing-10">
+            <img class="mx-auto" 
+            src="https://www.abuseipdb.com/contributor/119071.svg" 
+            alt="AbuseIPDB Contributor Badge" 
+            style="width: 316px;
+                    border-radius: 5px;
+                    border-top: 5px solid #058403;
+                    border-right: 5px solid #111;
+                    border-bottom: 5px solid #111;
+                    border-left: 5px solid #058403;
+                    padding: 5px;
+                    background: #35c246 linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.3) 50%, rgba(0,0,0,.2) 51%, rgba(0,0,0,0));
+                    padding: 5px;
+                    box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, .2);" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 </x-app-guest>
